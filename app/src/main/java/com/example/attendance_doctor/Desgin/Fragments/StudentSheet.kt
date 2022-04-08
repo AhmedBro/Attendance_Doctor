@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.attendance_doctor.Data.Student
 import com.example.attendance_doctor.R
 
 
@@ -21,7 +24,30 @@ class StudentSheet : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_sheet, container, false)
+        val view = inflater.inflate(R.layout.fragment_student_sheet, container, false)
+
+        val rv = view.findViewById<RecyclerView>(R.id.mStudentsRecycler)
+
+        val manager = GridLayoutManager(activity, 3)
+
+        rv.layoutManager = manager
+
+
+        var students = mutableListOf(
+            Student("20180512", "20180512", null),
+            Student("20180512", "20180512", null),
+            Student("20180512", "20180512", null),
+            Student("20180512", "20180512", null),
+            Student("20180512", "20180512", null),
+            Student("20180512", "20180512", null),
+            Student("20180512", "20180512", null)
+        )
+
+        var adapter = StudentAdapter()
+
+        adapter.submitList(students)
+
+        return view
     }
 
 }
