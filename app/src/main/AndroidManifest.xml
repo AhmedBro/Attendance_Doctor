@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Attendance_Doctor">
         <activity
-            android:name=".MainActivity"
+            android:name=".Desgin.Activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
