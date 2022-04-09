@@ -1,6 +1,57 @@
 <resources>
-    <string name="app_name">Attendance_Doctor</string>
+    <string name="app_name">Doctor</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_your_mail">Enter Your Mail</string>
+    <string name="password">Password</string>
+    <string name="Mail">E-Mail</string>
+    <string name="login">Login</string>
+    <string name="forget_password"><u>Forget Password ?</u></string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="email">Email</string>
+    <string name="submit">submit</string>
+    <string name="add_teacher">Add teacher</string>
+    <string name="add_student">Add student</string>
+    <string name="show_teacher_table">Show teacher table</string>
+    <string name="show_student_table">Show student table</string>
+    <string name="welcome">Welcome Admin</string>
+    <string name="admin_guide">As an admin, You must record the data of All Teachers And Students every year, As well as the data of the Courses.</string>
+    <string name="username">Username</string>
+    <string name="forgotten_password">Forgotten password?</string>
+    <string name="teacher_name">Teacher Name:</string>
+    <string name="teacher_code">Teacher Code:</string>
+    <string name="addcourse_btn">Add Courses</string>
+    <string name="show_teacher">Show Teachers</string>
+    <string name="year">Year</string>
+    <string name="first_id">First ID</string>
+    <string name="add">Add</string>
+    <string name="teachers">Teachers</string>
+    <string name="add_new_teacher"><u>+Add teacher</u></string>
+    <string name="add_new_course"><u>+Add course</u></string>
+    <string name="students">Students</string>
+    <string name="Courses">Courses</string>
+    <string name="courses">Courses</string>
+    <string name="teacher_title">The Teachers</string>
+    <string name="no_teachers_yet">No teachers yet.</string>
+    <string name="save">Save</string>
+    <string name="save_cources">save</string>
+    <string name="search_student"><u>Search for a student</u></string>
+    <string name="search">Search</string>
+    <string name="copyRight">© 2022 FCAIH <b>AMMMA</b> team</string>
+    <string name="course_name">Course Name</string>
+    <string name="course_code">Course Code</string>
+    <string name="date">Date</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="place">Place</string>
+    <string name="search_for_student_by_id">Search for Student By Id</string>
+    <string name="last_id">Last ID</string>
+    <string name="id">ID</string>
+    <string-array name="Groups">
+        <item> Group 1</item>
+        <item> Group 2</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="download_sheet">Download Students Sheet</string>
 </resources>
