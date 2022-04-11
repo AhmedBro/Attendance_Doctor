@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/course_shap"
+    android:layout_marginBottom="@dimen/_10ssp"
+
+    android:padding="@dimen/_10ssp"
+
+    >
+
+    <TextView
+        android:id="@+id/mCourseName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/mCourseCode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Operating System" />
+
+    <TextView
+        android:id="@+id/mCourseCode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/mCourseDay"
+        app:layout_constraintStart_toEndOf="@+id/mCourseName"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="CS-419" />
+
+    <TextView
+        android:id="@+id/mCourseDay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/mCourseTimeTo"
+        app:layout_constraintStart_toEndOf="@+id/mCourseCode"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Sunday" />
+
+    <TextView
+        android:id="@+id/mCourseTimeTo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/mCourseTimeFrom"
+        app:layout_constraintStart_toEndOf="@+id/mCourseDay"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="10:00"
+        android:layout_marginEnd="@dimen/_10ssp"
+        />
+
+    <TextView
+        android:id="@+id/mCourseTimeFrom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/mCourseLocation"
+        app:layout_constraintStart_toEndOf="@+id/mCourseTimeTo"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="10:00" />
+
+    <TextView
+        android:id="@+id/mCourseLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mCourseTimeFrom"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="h1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

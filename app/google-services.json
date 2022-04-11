@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "104394970994",
+    "project_id": "attendace-12035",
+    "storage_bucket": "attendace-12035.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104394970994:android:5585b0e1bb8044f6a16feb",
+        "android_client_info": {
+          "package_name": "com.Fcih.attendance_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "104394970994-4gso20aqtrdishoket8mag5r4coj7k93.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Fcih.attendance_admin",
+            "certificate_hash": "a49011963dd224ec224c49c75b061ee2d8dabb0e"
+          }
+        },
+        {
+          "client_id": "104394970994-lp747fccbsluvvusstbcv2ap1sdgred1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Fcih.attendance_admin",
+            "certificate_hash": "691ee862663d5ad99c21b2de69c0e032f2912d69"
+          }
+        },
+        {
+          "client_id": "104394970994-rpaedda61dbcv3f6i0l721ced8i39saj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAngmSl3_7_lTUTKnMaW_vvUIvOtg-Ulnw"
+        },
+        {
+          "current_key": "AIzaSyCYL9i687tj8XDUwlC9pljUk24dGCDeYvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "104394970994-rpaedda61dbcv3f6i0l721ced8i39saj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104394970994:android:2ff22e9dbcf805cca16feb",
+        "android_client_info": {
+          "package_name": "com.example.attendance_doctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "104394970994-pj7h2oof0j4vt6p6tc82ukj7dpcgj2o3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.attendance_doctor",
+            "certificate_hash": "fbe0e1e76c7c6906dc8d61ab9224fe7e1062084c"
+          }
+        },
+        {
+          "client_id": "104394970994-rpaedda61dbcv3f6i0l721ced8i39saj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAngmSl3_7_lTUTKnMaW_vvUIvOtg-Ulnw"
+        },
+        {
+          "current_key": "AIzaSyCYL9i687tj8XDUwlC9pljUk24dGCDeYvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "104394970994-rpaedda61dbcv3f6i0l721ced8i39saj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
