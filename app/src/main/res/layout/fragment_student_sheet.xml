@@ -8,93 +8,93 @@
     tools:context=".Desgin.Fragments.StudentSheet">
 
     <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/logo"
+        android:id="@+id/mLogo"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_300ssp"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/_10ssp"
         android:layout_marginTop="16dp"
         android:background="@drawable/selector3"
         android:foregroundGravity="center_horizontal"
         android:src="@drawable/logo_admin"
+        app:layout_constraintBottom_toTopOf="@id/mStudentsRecycler"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:riv_corner_radius="@dimen/_15ssp"
         app:shapeAppearanceOverlay="@style/RoundedSquare" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mCheckBoxRecycler"
+        android:id="@+id/mStudentsRecycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/_10ssp"
-        android:layout_marginTop="@dimen/_5ssp"
         app:layout_constraintBottom_toTopOf="@id/mButtons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        tools:listitem="" />
+        app:layout_constraintTop_toBottomOf="@+id/mLogo"
+        tools:listitem="@layout/student_list_item_view" />
 
     <TextView
-        android:id="@+id/mChexBoxNoCoursesTV"
+        android:id="@+id/mAlterStudentsTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No Students yet"
+        android:text="@string/no_students_yet"
         android:textColor="@color/gray"
         android:textSize="@dimen/_20ssp"
         android:textStyle="italic"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/mCheckBoxRecycler"
+        app:layout_constraintBottom_toBottomOf="@+id/mStudentsRecycler"
         app:layout_constraintBottom_toTopOf="@id/mButtons"
-        app:layout_constraintEnd_toEndOf="@+id/mCheckBoxRecycler"
-        app:layout_constraintStart_toStartOf="@+id/mCheckBoxRecycler"
-        app:layout_constraintTop_toTopOf="@+id/mCheckBoxRecycler" />
+        app:layout_constraintEnd_toEndOf="@+id/mStudentsRecycler"
+        app:layout_constraintStart_toStartOf="@+id/mStudentsRecycler"
+        app:layout_constraintTop_toTopOf="@+id/mStudentsRecycler" />
 
     <ProgressBar
-        android:id="@+id/mCheckBoxCoursesProgressBar"
+        android:id="@+id/mStudentsProgressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/mCheckBoxRecycler"
-        app:layout_constraintEnd_toEndOf="@+id/mCheckBoxRecycler"
-        app:layout_constraintStart_toStartOf="@id/mCheckBoxRecycler"
-        app:layout_constraintTop_toTopOf="@+id/mCheckBoxRecycler" />
+        app:layout_constraintBottom_toBottomOf="@+id/mStudentsRecycler"
+        app:layout_constraintEnd_toEndOf="@+id/mStudentsRecycler"
+        app:layout_constraintStart_toStartOf="@id/mStudentsRecycler"
+        app:layout_constraintTop_toTopOf="@+id/mStudentsRecycler" />
 
     <LinearLayout
         android:id="@+id/mButtons"
-        android:layout_marginBottom="@dimen/_10ssp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5ssp"
+        android:layout_marginBottom="@dimen/_10ssp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mCheckBoxRecycler">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mStudentsRecycler">
 
         <Button
             android:id="@+id/mDownloadSheet"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_50ssp"
             android:layout_marginTop="@dimen/_5ssp"
+            android:layout_marginEnd="@dimen/_50ssp"
             android:background="@drawable/selector4"
             android:text="@string/download_sheet"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mCheckBoxRecycler" />
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/mShowQrCodeButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_50ssp"
             android:layout_marginTop="@dimen/_5ssp"
+            android:layout_marginEnd="@dimen/_50ssp"
             android:background="@drawable/selector4"
-            android:text="@string/download_sheet"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mDownloadSheet" />
+            android:text="@string/show_Qr_code"
+            android:textAllCaps="false" />
     </LinearLayout>
 
 
