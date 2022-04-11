@@ -16,4 +16,7 @@
     <color name="green_pressed">#1B473A</color>
     <color name="gray">#707070</color>
     <color name="light_gray">#D5D0D0</color>
+    <color name="color_login">#0000FF</color>
+    <color name="whiteBack">#E5E5E5</color>
+    <color name="go_btn">#FFC107</color>
 </resources>
