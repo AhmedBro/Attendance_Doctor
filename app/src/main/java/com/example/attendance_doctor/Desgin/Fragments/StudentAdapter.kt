@@ -25,14 +25,14 @@ class StudentAdapter() :
 
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
         holder.apply {
-            itemView.setOnClickListener {
-                onItemClickListener?.let { it(getItem(position)) }
-            }
+            id.text = getItem(position).StudentID
+            name.text = getItem(position).StudentName
         }
     }
 
     inner class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+        var id = itemView.mStudentId
+        var name = itemView.mStudentName
     }
 
     class StudentDiffCallback : DiffUtil.ItemCallback<Student>() {
@@ -45,10 +45,5 @@ class StudentAdapter() :
         }
     }
 
-    private var onItemClickListener: ((Student) -> Unit)? = null
-
-    fun setOnItemClickListener(listener: (Student) -> Unit) {
-        onItemClickListener = listener
-    }
 
 }

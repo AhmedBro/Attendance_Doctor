@@ -34,13 +34,13 @@ class StudentSheet : Fragment() {
 
 
         var students = mutableListOf(
-            Student("20180512", "20180512", null),
-            Student("20180512", "20180512", null),
-            Student("20180512", "20180512", null),
-            Student("20180512", "20180512", null),
-            Student("20180512", "20180512", null),
-            Student("20180512", "20180512", null),
-            Student("20180512", "20180512", null)
+            Student("20180512", "20180512", "محمد عادل عبدالله", null),
+            Student("20180512", "20180512", "محمد عادل عبدالله", null),
+            Student("20180512", "20180512", "محمد عادل عبدالله", null),
+            Student("20180512", "20180512", "محمد عادل عبدالله", null),
+            Student("20180512", "20180512", "محمد عادل عبدالله", null),
+            Student("20180512", "20180512", "محمد عادل عبدالله", null),
+            Student("20180512", "20180512", "محمد عادل عبدالله", null)
         )
 
         var adapter = StudentAdapter()
