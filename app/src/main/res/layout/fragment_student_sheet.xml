@@ -82,7 +82,9 @@
             android:layout_marginEnd="@dimen/_50ssp"
             android:background="@drawable/selector4"
             android:text="@string/download_sheet"
-            android:textAllCaps="false" />
+
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/mShowQrCodeButton"
@@ -94,7 +96,8 @@
             android:layout_marginEnd="@dimen/_50ssp"
             android:background="@drawable/selector4"
             android:text="@string/show_Qr_code"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
     </LinearLayout>
 
 
