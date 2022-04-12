@@ -1,4 +1,4 @@
-package com.Fcih.attendance_admin.Domain
+package com.example.attendance_doctor.Domain
 
 import android.os.Build
 import androidx.annotation.RequiresApi
