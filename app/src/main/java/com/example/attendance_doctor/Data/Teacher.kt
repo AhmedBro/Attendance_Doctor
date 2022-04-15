@@ -2,7 +2,7 @@ package com.example.attendance_doctor.Data
 
 import java.io.Serializable
 
-class Teacher : Serializable{
+class Teacher:Serializable {
     var id : String? = null
     var teacherName : String? = null
     var teacherPassword : String? = null
