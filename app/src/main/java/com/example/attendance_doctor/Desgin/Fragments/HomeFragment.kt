@@ -24,10 +24,24 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment() {
+    lateinit var mSharedPreferences: SharedPreferences
+    lateinit var teacherID :String
+   // Amr Ghomiem1155
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        mSharedPreferences = context?.let { SharedPreferences(it) }!!
+        teacherID= mSharedPreferences.getId().toString()
+
+        return view
+    }
     lateinit var doctorDataViewModel: DoctorDataViewModel
-    var teacherID : String="2233"
-     var mTeacher =Teacher()
+
+    var mTeacher =Teacher()
    // Teacher("33","Ashraf","234", arrayListOf("CS-300Group 1","IS-300Group 1"))
     lateinit var mTeacherCourses : ArrayList<Course>
     lateinit var adapter: CourseListAdapter
@@ -35,7 +49,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onStart() {
         super.onStart()
         getTeacherData()
-        getTeacherCourses()
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,13 +69,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         })
         doctorDataViewModel.doneRetrieving.observe(viewLifecycleOwner, Observer {
             if (it){
+                mTeacher=doctorDataViewModel.teacherdata
                 mTeacher_Name.text=" Hello Dr/ ${mTeacher.teacherName}"
+                getTeacherCourses()
+
+            }else{}
+        })
+        doctorDataViewModel.doneRetrievingcourses.observe(viewLifecycleOwner, Observer {
+            if (it){
                 adapter= CourseListAdapter(mTeacherCourses)
                 Log.e("testtttt",mTeacherCourses.size.toString())
                 mTableRecyclerView.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
                 mTableRecyclerView.adapter=adapter
-                doctorDataViewModel.doneRetrievingdata()
-            }else{}
+            }
         })
 
     }
@@ -71,7 +90,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun getTeacherData() {
         lifecycleScope.launch(Dispatchers.IO) {
-            mTeacher = async { doctorDataViewModel.getDoctorData(teacherID) }.await()
+             async { teacherID?.let { doctorDataViewModel.getDoctorData(it) } }.await()
         }
     }
     private fun getTeacherCourses() {
