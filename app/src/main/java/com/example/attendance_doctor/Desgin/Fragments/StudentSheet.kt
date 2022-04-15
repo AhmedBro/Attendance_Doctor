@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.attendance_doctor.Data.Student
 import com.example.attendance_doctor.R
@@ -28,12 +29,18 @@ class StudentSheet : Fragment() {
 
         val rv = view.findViewById<RecyclerView>(R.id.mStudentsRecycler)
 
-        val manager = GridLayoutManager(activity, 3)
+        val manager = LinearLayoutManager(this.context , LinearLayoutManager.VERTICAL , false)
 
         rv.layoutManager = manager
 
 
         var students = mutableListOf(
+            Student("20180512", "20180512", "محمد عادل عبدالله", null),
+            Student("20180512", "20180512", "محمد عادل عبدالله", null),
+            Student("20180512", "20180512", "محمد عادل عبدالله", null),
+            Student("20180512", "20180512", "محمد عادل عبدالله", null),
+            Student("20180512", "20180512", "محمد عادل عبدالله", null),
+            Student("20180512", "20180512", "محمد عادل عبدالله", null),
             Student("20180512", "20180512", "محمد عادل عبدالله", null),
             Student("20180512", "20180512", "محمد عادل عبدالله", null),
             Student("20180512", "20180512", "محمد عادل عبدالله", null),
@@ -46,6 +53,8 @@ class StudentSheet : Fragment() {
         var adapter = StudentAdapter()
 
         adapter.submitList(students)
+
+        rv.adapter = adapter
 
         return view
     }

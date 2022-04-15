@@ -4,10 +4,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.Fcih.attendance_admin.Domain.Constants
-import com.Fcih.attendance_admin.Domain.InitFireStore
 import com.example.attendance_doctor.Data.Student
 import com.example.attendance_doctor.Data.Teacher
+import com.example.attendance_doctor.Domain.Constants
+import com.example.attendance_doctor.Domain.InitFireStore
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginViewModel : ViewModel() {
