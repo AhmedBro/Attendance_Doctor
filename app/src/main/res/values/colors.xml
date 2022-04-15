@@ -19,4 +19,5 @@
     <color name="color_login">#0000FF</color>
     <color name="whiteBack">#E5E5E5</color>
     <color name="go_btn">#FFC107</color>
+    <color name="dark_gray">#808382</color>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.attendance_doctor.Desgin.Activities
+package com.example.attendance_doctor.Desgin.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

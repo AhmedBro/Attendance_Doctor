@@ -7,6 +7,16 @@
         <entry key="..\:/Attendance_Doctor/app/src/main/res/drawable/selector4.xml" value="0.148" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/fragment_student_sheet.xml" value="0.22" />
+        <entry key="..\:/Yalladealz/Attendance_Doctor/app/src/main/res/drawable/details_shap.xml" value="0.3651041666666667" />
+        <entry key="..\:/Yalladealz/Attendance_Doctor/app/src/main/res/layout/activity_main.xml" value="0.3489583333333333" />
+        <entry key="..\:/Yalladealz/Attendance_Doctor/app/src/main/res/layout/fragment_change_password.xml" value="0.3489583333333333" />
+        <entry key="..\:/Yalladealz/Attendance_Doctor/app/src/main/res/layout/fragment_home.xml" value="0.19114583333333332" />
+        <entry key="..\:/Yalladealz/Attendance_Doctor/app/src/main/res/layout/fragment_lectcures.xml" value="0.3489583333333333" />
+        <entry key="..\:/Yalladealz/Attendance_Doctor/app/src/main/res/layout/fragment_login.xml" value="0.3489583333333333" />
+        <entry key="..\:/Yalladealz/Attendance_Doctor/app/src/main/res/layout/fragment_qr_code_generated.xml" value="0.19114583333333332" />
+        <entry key="..\:/Yalladealz/Attendance_Doctor/app/src/main/res/layout/fragment_splash.xml" value="0.3489583333333333" />
+        <entry key="..\:/Yalladealz/Attendance_Doctor/app/src/main/res/layout/fragment_student_sheet.xml" value="0.3489583333333333" />
+        <entry key="..\:/Yalladealz/Attendance_Doctor/app/src/main/res/layout/lectcure_shap.xml" value="0.3489583333333333" />
       </map>
     </option>
   </component>

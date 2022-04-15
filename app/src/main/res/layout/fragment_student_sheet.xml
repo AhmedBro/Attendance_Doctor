@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:riv_corner_radius="@dimen/_15ssp"
-        app:shapeAppearanceOverlay="@style/RoundedSquare" />
+     />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mStudentsRecycler"

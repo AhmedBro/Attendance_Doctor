@@ -57,5 +57,6 @@
     <string name="show_Qr_code">Show Qr Code</string>
     <string name="no_students_yet">No Students Yet</string>
     <string name="Done">Done</string>
+    <string name="details">details</string>
 
 </resources>

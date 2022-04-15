@@ -1,4 +1,4 @@
-package com.example.attendance_doctor.Desgin.Fragments
+package com.example.attendance_doctor.Desgin.adapters
 
 import android.view.LayoutInflater
 import android.view.View

@@ -1,17 +1,14 @@
-package com.example.attendance_doctor.Data.Login
+package com.example.attendance_doctor.Data.ForgetPassword
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
 import com.example.attendance_doctor.Data.Teacher
 import com.example.attendance_doctor.Domain.Constants
 import com.example.attendance_doctor.Domain.InitFireStore
-import com.google.firebase.auth.FirebaseAuth
 
-class LoginViewModel : ViewModel() {
-
+class ForgetPasswordViewModel : ViewModel() {
 
     private val _navigateToHome = MutableLiveData<Boolean>()
     val navigateToHome: LiveData<Boolean>
@@ -33,9 +30,10 @@ class LoginViewModel : ViewModel() {
     }
 
 
-    suspend fun teacherLogin(
+    suspend fun ChangePassword(
         id: String,
-        password: String
+        password: String,
+        mNewPassword: String
     ) {
         if (password.isNotEmpty() && id.isNotEmpty()) {
             InitFireStore.instance.collection(Constants.TEACHER_TABLE)
@@ -43,8 +41,7 @@ class LoginViewModel : ViewModel() {
                     var teacher = it.toObject(Teacher::class.java)
                     if (teacher != null) {
                         if (teacher?.teacherPassword == password) {
-                            _navigateToHome.value = true
-                            _showProgressbar.value = false
+                            change(mNewPassword, id)
                         } else {
                             _errorMessage.value = "Wrong Id or Password"
                         }
@@ -60,5 +57,16 @@ class LoginViewModel : ViewModel() {
             _errorMessage.value = "Id or password can't be empty"
             _showProgressbar.value = false
         }
+    }
+
+    fun change(mNewPassword: String, id: String) {
+        var Pass: HashMap<String, String> = HashMap()
+        Pass.put("teacherPassword", mNewPassword)
+        InitFireStore.instance.collection(Constants.TEACHER_TABLE)
+            .document(id).set(Pass).addOnSuccessListener {
+                Log.e("Channgedddd", it.toString())
+                _navigateToHome.value = true
+                _showProgressbar.value = false
+            }
     }
 }

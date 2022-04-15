@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LectcuresFragment">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/mLogo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/_10ssp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/selector3"
+        android:foregroundGravity="center_horizontal"
+        android:src="@drawable/logo_admin"
+        app:layout_constraintBottom_toTopOf="@id/mStudentsRecycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="@dimen/_15ssp"
+ />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mStudentsRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/_10ssp"
+        app:layout_constraintBottom_toTopOf="@id/mGenerateQr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mLogo"
+        tools:listitem="@layout/student_list_item_view" />
+
+    <Button
+        android:id="@+id/mGenerateQr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/selector4"
+        android:paddingStart="@dimen/_35ssp"
+        android:paddingEnd="@dimen/_35ssp"
+        android:layout_margin="@dimen/_15ssp"
+        android:text="@string/download_sheet"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

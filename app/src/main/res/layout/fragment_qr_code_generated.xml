@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Desgin.Activities.qr_code_generated">
+>
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/mlogoIV"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:riv_corner_radius="@dimen/_15ssp"
-        app:shapeAppearanceOverlay="@style/RoundedSquare" />
+        />
 
     <ImageView
         android:id="@+id/imageView2"

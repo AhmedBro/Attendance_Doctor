@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/splash">
 
     <fragment
         android:id="@+id/splash"
@@ -32,7 +32,11 @@
         android:id="@+id/forgetPasswordFragment"
         android:name="com.example.attendance_doctor.Desgin.Fragments.ChangePasswordFragment"
         android:label="fragment_forget_password"
-        tools:layout="@layout/fragment_change_password" />
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_splash"
+            app:destination="@id/splash" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.attendance_doctor.Desgin.Fragments.HomeFragment"
@@ -42,4 +46,19 @@
             android:id="@+id/action_homeFragment_to_forgetPasswordFragment"
             app:destination="@id/forgetPasswordFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/qr_code_generated"
+        android:name="com.example.attendance_doctor.Desgin.Activities.qr_code_generated"
+        android:label="fragment_qr_code_generated"
+        tools:layout="@layout/fragment_qr_code_generated" />
+    <fragment
+        android:id="@+id/studentSheet"
+        android:name="com.example.attendance_doctor.Desgin.Fragments.StudentSheet"
+        android:label="fragment_student_sheet"
+        tools:layout="@layout/fragment_student_sheet" />
+    <fragment
+        android:id="@+id/lectcuresFragment"
+        android:name="com.example.attendance_doctor.LectcuresFragment"
+        android:label="fragment_lectcures"
+        tools:layout="@layout/fragment_lectcures" />
 </navigation>

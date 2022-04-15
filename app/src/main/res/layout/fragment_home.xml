@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:riv_corner_radius="@dimen/_15ssp"
-        app:shapeAppearanceOverlay="@style/RoundedSquare" />
+        />
     <TextView
         android:id="@+id/mTeacher_Name"
         android:layout_width="0dp"
