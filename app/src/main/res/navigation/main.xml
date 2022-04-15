@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    app:startDestination="@id/splash">
+    app:startDestination="@id/studentSheet">
 
     <fragment
         android:id="@+id/splash"
@@ -29,22 +29,16 @@
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/forgetPasswordFragment"
-        android:name="com.example.attendance_doctor.Desgin.Fragments.ChangePasswordFragment"
-        android:label="fragment_forget_password"
-        tools:layout="@layout/fragment_change_password" >
-        <action
-            android:id="@+id/action_forgetPasswordFragment_to_splash"
-            app:destination="@id/splash" />
-    </fragment>
-    <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.attendance_doctor.Desgin.Fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_forgetPasswordFragment"
-            app:destination="@id/forgetPasswordFragment" />
+            android:id="@+id/action_homeFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_lectcuresFragment"
+            app:destination="@id/lectcuresFragment" />
     </fragment>
     <fragment
         android:id="@+id/qr_code_generated"
@@ -55,10 +49,30 @@
         android:id="@+id/studentSheet"
         android:name="com.example.attendance_doctor.Desgin.Fragments.StudentSheet"
         android:label="fragment_student_sheet"
-        tools:layout="@layout/fragment_student_sheet" />
+        tools:layout="@layout/fragment_student_sheet" >
+        <action
+            android:id="@+id/action_studentSheet_to_qr_code_generated"
+            app:destination="@id/qr_code_generated" />
+    </fragment>
     <fragment
         android:id="@+id/lectcuresFragment"
         android:name="com.example.attendance_doctor.LectcuresFragment"
         android:label="fragment_lectcures"
-        tools:layout="@layout/fragment_lectcures" />
+        tools:layout="@layout/fragment_lectcures" >
+        <action
+            android:id="@+id/action_lectcuresFragment_to_studentSheet"
+            app:destination="@id/studentSheet" />
+        <action
+            android:id="@+id/action_lectcuresFragment_to_qr_code_generated"
+            app:destination="@id/qr_code_generated" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.attendance_doctor.Desgin.Fragments.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

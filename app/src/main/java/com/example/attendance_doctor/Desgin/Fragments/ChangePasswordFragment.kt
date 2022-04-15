@@ -32,6 +32,7 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
         super.onViewCreated(view, savedInstanceState)
         mSharedPreferences = context?.let { SharedPreferences(it) }!!
 
+        forgetPasswordViewModel=ViewModelProvider(this).get(ForgetPasswordViewModel::class.java)
         mSubmitForgetPasswordBtn.setOnClickListener {
             if (Validate()) {
 
@@ -47,7 +48,7 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
             if (it) {
                 mSharedPreferences.setAdminData("", "", false)
                 Navigation.findNavController(this.requireView())
-                    .navigate(ChangePasswordFragmentDirections.actionForgetPasswordFragmentToSplash())
+                    .navigate(ChangePasswordFragmentDirections.actionChangePasswordFragmentToLoginFragment())
                 forgetPasswordViewModel.doneNavigatingToHome()
             }
         })
