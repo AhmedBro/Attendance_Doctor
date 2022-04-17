@@ -39,12 +39,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/_10ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/mChange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mTeacher_Name"
         tools:listitem="@layout/list_item_course_view"
         />
+    <TextView
+        android:text="Change Password ?"
+        android:textAllCaps="false"
+        android:id="@+id/mChange"
+        android:textColor="@color/primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mTableRecyclerView"/>
 
     <ProgressBar
         android:id="@+id/mTeacherTableProgressBar"

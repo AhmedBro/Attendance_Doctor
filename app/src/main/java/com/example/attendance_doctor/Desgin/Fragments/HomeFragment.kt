@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.attendance_doctor.Data.Course
 import com.example.attendance_doctor.Data.DoctorDataViewModel
@@ -36,6 +39,9 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         mSharedPreferences = context?.let { SharedPreferences(it) }!!
         teacherID= mSharedPreferences.getId().toString()
+       view.findViewById<TextView>(R.id.mChange).setOnClickListener {
+           findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToChangePasswordFragment())
+       }
 
         return view
     }
