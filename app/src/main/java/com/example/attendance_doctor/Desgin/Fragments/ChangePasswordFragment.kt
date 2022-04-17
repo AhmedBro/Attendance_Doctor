@@ -39,7 +39,7 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
                 lifecycleScope.launch(Dispatchers.IO) { forgetPasswordViewModel.ChangePassword(mSharedPreferences.getId().toString(), mOldPassEt.text.toString() , mNewPassEt.text.toString()) }
 
             } else {
-                mLoginProgressBar.visibility = View.INVISIBLE
+                mForgetPasswordProgressBar.visibility = View.INVISIBLE
             }
         }
 
@@ -56,18 +56,16 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
 
         forgetPasswordViewModel.showProgressbar.observe(viewLifecycleOwner, Observer {
             if (it) {
-                mLoginProgressBar.visibility = View.VISIBLE
+                mForgetPasswordProgressBar.visibility = View.VISIBLE
             } else {
-                mLoginProgressBar.visibility = View.INVISIBLE
+                mForgetPasswordProgressBar.visibility = View.INVISIBLE
             }
         })
 
         forgetPasswordViewModel.errorMessage.observe(viewLifecycleOwner, Observer { message ->
             if (message.isNotEmpty()) {
-                mErrorMessage.visibility = View.VISIBLE
-                mErrorMessage.text = message
-            } else {
-                mErrorMessage.visibility = View.INVISIBLE
+
+                Toast.makeText(context , message , Toast.LENGTH_LONG).show()
             }
         })
 
@@ -76,23 +74,19 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
     fun Validate(): Boolean {
 
         if (mOldPassEt.text.toString().isEmpty()) {
-            mErrorMessage.text = "Please enter your Old Password"
-            mErrorMessage.visibility = View.VISIBLE
+
+            Toast.makeText(context , "Please enter your Old Password" , Toast.LENGTH_LONG).show()
             return false
         } else if (mNewPassEt.text.toString().isEmpty()) {
-            mErrorMessage.text = "Please enter your new Password"
-            mErrorMessage.visibility = View.VISIBLE
+            Toast.makeText(context , "Please enter your new Password" , Toast.LENGTH_LONG).show()
             return false
         } else if (mConfirNewPasstv.text.toString().isEmpty()) {
-            mErrorMessage.text = "Please enter your new Password"
-            mErrorMessage.visibility = View.VISIBLE
+            Toast.makeText(context , "Please enter your new Password" , Toast.LENGTH_LONG).show()
             return false
         } else if (mConfirNewPasstv.text.toString().equals(mNewPassEt.text.toString())) {
-            mErrorMessage.text = "please enter your new pass in confirm pass right"
-            mErrorMessage.visibility = View.VISIBLE
+            Toast.makeText(context , "please enter your new pass in confirm pass right", Toast.LENGTH_LONG).show()
             return false
         } else {
-            mErrorMessage.visibility = View.INVISIBLE
             return true
         }
 

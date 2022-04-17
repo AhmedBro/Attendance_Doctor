@@ -51,7 +51,7 @@ class ForgetPasswordViewModel : ViewModel() {
                     _showProgressbar.value = false
                 }.addOnFailureListener {
                     _showProgressbar.value = false
-                    _errorMessage.value = it.localizedMessage ?: "Wrong Id or password"
+                    _errorMessage.value = it.localizedMessage ?: "Wrong password"
                 }
         } else {
             _errorMessage.value = "Id or password can't be empty"
@@ -60,11 +60,10 @@ class ForgetPasswordViewModel : ViewModel() {
     }
 
     fun change(mNewPassword: String, id: String) {
-        var Pass: HashMap<String, String> = HashMap()
+        var Pass: HashMap<String, Any> = HashMap()
         Pass.put("teacherPassword", mNewPassword)
         InitFireStore.instance.collection(Constants.TEACHER_TABLE)
-            .document(id).set(Pass).addOnSuccessListener {
-                Log.e("Channgedddd", it.toString())
+            .document(id).update(Pass).addOnSuccessListener {
                 _navigateToHome.value = true
                 _showProgressbar.value = false
             }
