@@ -34,6 +34,7 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
 
         forgetPasswordViewModel=ViewModelProvider(this).get(ForgetPasswordViewModel::class.java)
         mSubmitForgetPasswordBtn.setOnClickListener {
+            forgetPasswordViewModel.showProgressBar()
             if (Validate()) {
 
                 lifecycleScope.launch(Dispatchers.IO) { forgetPasswordViewModel.ChangePassword(mSharedPreferences.getId().toString(), mOldPassEt.text.toString() , mNewPassEt.text.toString()) }
@@ -83,7 +84,7 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
         } else if (mConfirNewPasstv.text.toString().isEmpty()) {
             Toast.makeText(context , "Please enter your new Password" , Toast.LENGTH_LONG).show()
             return false
-        } else if (mConfirNewPasstv.text.toString().equals(mNewPassEt.text.toString())) {
+        } else if (mNewPassEt.text.toString()!=mConfirmNewPassEt.text.toString()) {
             Toast.makeText(context , "please enter your new pass in confirm pass right", Toast.LENGTH_LONG).show()
             return false
         } else {

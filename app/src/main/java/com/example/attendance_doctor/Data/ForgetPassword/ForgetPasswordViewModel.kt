@@ -24,7 +24,9 @@ class ForgetPasswordViewModel : ViewModel() {
     val errorMessage: LiveData<String>
         get() = _errorMessage
 
-
+    fun showProgressBar() {
+        _showProgressbar.value = true
+    }
     fun doneNavigatingToHome() {
         _navigateToHome.value = false
     }
