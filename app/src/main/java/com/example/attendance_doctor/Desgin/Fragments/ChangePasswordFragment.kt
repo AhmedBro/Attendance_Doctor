@@ -28,6 +28,7 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
 
     lateinit var forgetPasswordViewModel: ForgetPasswordViewModel
     lateinit var mSharedPreferences: SharedPreferences
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mSharedPreferences = context?.let { SharedPreferences(it) }!!
