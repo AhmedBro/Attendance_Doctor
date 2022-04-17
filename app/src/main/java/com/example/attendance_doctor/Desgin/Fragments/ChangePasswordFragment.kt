@@ -32,12 +32,18 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
         super.onViewCreated(view, savedInstanceState)
         mSharedPreferences = context?.let { SharedPreferences(it) }!!
 
-        forgetPasswordViewModel=ViewModelProvider(this).get(ForgetPasswordViewModel::class.java)
+        forgetPasswordViewModel = ViewModelProvider(this).get(ForgetPasswordViewModel::class.java)
         mSubmitForgetPasswordBtn.setOnClickListener {
             forgetPasswordViewModel.showProgressBar()
             if (Validate()) {
 
-                lifecycleScope.launch(Dispatchers.IO) { forgetPasswordViewModel.ChangePassword(mSharedPreferences.getId().toString(), mOldPassEt.text.toString() , mNewPassEt.text.toString()) }
+                lifecycleScope.launch(Dispatchers.IO) {
+                    forgetPasswordViewModel.ChangePassword(
+                        mSharedPreferences.getId().toString(),
+                        mOldPassEt.text.toString(),
+                        mNewPassEt.text.toString()
+                    )
+                }
 
             } else {
                 mForgetPasswordProgressBar.visibility = View.INVISIBLE
@@ -66,7 +72,7 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
         forgetPasswordViewModel.errorMessage.observe(viewLifecycleOwner, Observer { message ->
             if (message.isNotEmpty()) {
 
-                Toast.makeText(context , message , Toast.LENGTH_LONG).show()
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show()
             }
         })
 
@@ -76,16 +82,20 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
 
         if (mOldPassEt.text.toString().isEmpty()) {
 
-            Toast.makeText(context , "Please enter your Old Password" , Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Please enter your Old Password", Toast.LENGTH_LONG).show()
             return false
         } else if (mNewPassEt.text.toString().isEmpty()) {
-            Toast.makeText(context , "Please enter your new Password" , Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Please enter your new Password", Toast.LENGTH_LONG).show()
             return false
         } else if (mConfirNewPasstv.text.toString().isEmpty()) {
-            Toast.makeText(context , "Please enter your new Password" , Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Please enter your new Password", Toast.LENGTH_LONG).show()
             return false
-        } else if (mNewPassEt.text.toString()!=mConfirmNewPassEt.text.toString()) {
-            Toast.makeText(context , "please enter your new pass in confirm pass right", Toast.LENGTH_LONG).show()
+        } else if (mNewPassEt.text.toString() != mConfirmNewPassEt.text.toString()) {
+            Toast.makeText(
+                context,
+                "please enter your new pass in confirm pass right",
+                Toast.LENGTH_LONG
+            ).show()
             return false
         } else {
             return true
