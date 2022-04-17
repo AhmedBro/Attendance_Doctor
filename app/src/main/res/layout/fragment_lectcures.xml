@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LectcuresFragment">
+    tools:context=".Desgin.Fragments.LectcuresFragment">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/mLogo"
@@ -31,18 +31,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mLogo"
-        tools:listitem="@layout/student_list_item_view" />
+        tools:listitem="@layout/lectcure_shap" />
 
     <Button
         android:id="@+id/mGenerateQr"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/selector4"
+        android:paddingStart="@dimen/_35ssp"
+        android:paddingEnd="@dimen/_35ssp"
+        android:layout_margin="@dimen/_10ssp"
+        android:text="@string/generate_qr_code"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/mUploadStudentSheet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/mUploadStudentSheet"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/selector4"
         android:paddingStart="@dimen/_35ssp"
         android:paddingEnd="@dimen/_35ssp"
         android:layout_margin="@dimen/_15ssp"
-        android:text="@string/download_sheet"
+        android:text="@string/upload_student_sheet"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

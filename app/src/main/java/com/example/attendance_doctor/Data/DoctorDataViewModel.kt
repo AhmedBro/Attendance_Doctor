@@ -33,7 +33,7 @@ class DoctorDataViewModel : ViewModel() {
     }
 
     fun showProgressBar() {
-        _showProgressbar.value = true
+        _showProgressbar.postValue(true)
     }
 
     var teacherdata = Teacher()

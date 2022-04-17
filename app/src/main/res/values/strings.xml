@@ -58,5 +58,7 @@
     <string name="no_students_yet">No Students Yet</string>
     <string name="Done">Done</string>
     <string name="details">details</string>
+    <string name="generate_qr_code">Generate QR Code</string>
+    <string name="upload_student_sheet">Upload Student sheet</string>
 
 </resources>
