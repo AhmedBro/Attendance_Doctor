@@ -15,7 +15,8 @@
     <string name="show_teacher_table">Show teacher table</string>
     <string name="show_student_table">Show student table</string>
     <string name="welcome">Welcome Admin</string>
-    <string name="admin_guide">As an admin, You must record the data of All Teachers And Students every year, As well as the data of the Courses.</string>
+    <string name="doctor_guide">\nAs an Doctor, You can choose a course and Upload your student sheet and generate a qr code, As well as you can</string>
+    <string name="change_password"><b>Change Your Password</b></string>
     <string name="username">Username</string>
     <string name="forgotten_password">Forgotten password?</string>
     <string name="teacher_name">Teacher Name:</string>

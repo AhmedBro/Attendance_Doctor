@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.attendance_doctor.Data.Course
 import com.example.attendance_doctor.R
+import kotlinx.android.synthetic.main.fragment_lectcures.*
 
 class LectcuresFragment : Fragment() {
 lateinit var mCourse: Course
@@ -23,7 +24,7 @@ lateinit var mCourse: Course
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mCourse=LectcuresFragmentArgs.fromBundle(requireArguments()).course
-        Toast.makeText(this.context,mCourse.courseName.toString(),Toast.LENGTH_SHORT).show()
+        mCourseName.text = mCourse.courseName
 
 
     }

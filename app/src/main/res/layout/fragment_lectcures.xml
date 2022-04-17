@@ -19,8 +19,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:riv_corner_radius="@dimen/_15ssp"
- />
+        app:riv_corner_radius="@dimen/_15ssp" />
+
+    <TextView
+        android:id="@+id/mCourseName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10ssp"
+        android:layout_marginEnd="@dimen/_10ssp"
+        android:text=""
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintBottom_toTopOf="@id/mStudentsRecycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mLogo" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mStudentsRecycler"
@@ -38,25 +55,26 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_margin="@dimen/_10ssp"
         android:background="@drawable/selector4"
         android:paddingStart="@dimen/_35ssp"
         android:paddingEnd="@dimen/_35ssp"
-        android:layout_margin="@dimen/_10ssp"
         android:text="@string/generate_qr_code"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@id/mUploadStudentSheet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/mUploadStudentSheet"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_margin="@dimen/_15ssp"
         android:background="@drawable/selector4"
         android:paddingStart="@dimen/_35ssp"
         android:paddingEnd="@dimen/_35ssp"
-        android:layout_margin="@dimen/_15ssp"
         android:text="@string/upload_student_sheet"
         android:textAllCaps="false"
         android:textColor="@color/white"

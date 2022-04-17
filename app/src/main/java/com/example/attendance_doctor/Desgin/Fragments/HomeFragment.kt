@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         mSharedPreferences = context?.let { SharedPreferences(it) }!!
         teacherID= mSharedPreferences.getId().toString()
-       view.findViewById<TextView>(R.id.mChange).setOnClickListener {
+       view.findViewById<TextView>(R.id.mChangePassword).setOnClickListener {
            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToChangePasswordFragment())
        }
 
@@ -78,8 +78,7 @@ class HomeFragment : Fragment() {
         doctorDataViewModel.doneRetrieving.observe(viewLifecycleOwner, Observer {
             if (it){
                 mTeacher=doctorDataViewModel.teacherdata
-                mTeacher_Name.text=" Hello Dr/ ${mTeacher.teacherName}"
-
+                mGuide.text=" Hello Dr/ ${mTeacher.teacherName + getString(R.string.doctor_guide)}"
                 getTeacherCourses()
 
             }else{}

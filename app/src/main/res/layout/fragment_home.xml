@@ -1,60 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".Desgin.Fragments.HomeFragment">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/logo"
         android:layout_width="0dp"
-        android:layout_height="333dp"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/_10ssp"
         android:background="@drawable/selector3"
         android:foregroundGravity="center_horizontal"
         android:src="@drawable/logo_admin"
+        app:layout_constraintBottom_toTopOf="@id/mGuide"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:riv_corner_radius="@dimen/_15ssp"
-        />
+        app:riv_corner_radius="@dimen/_15ssp" />
+
     <TextView
-        android:id="@+id/mTeacher_Name"
+        android:id="@+id/mGuide"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text=""
+        android:layout_marginStart="@dimen/_10ssp"
+        android:layout_marginEnd="@dimen/_10ssp"
+        android:text="@string/doctor_guide"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/primary"
-        android:textSize="@dimen/_15ssp"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintBottom_toTopOf="@id/mChangePassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <TextView
+        android:id="@+id/mChangePassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10ssp"
+        android:layout_marginEnd="@dimen/_10ssp"
+        android:text="@string/change_password"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintBottom_toTopOf="@id/mTableRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mGuide" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mTableRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/_10ssp"
-        app:layout_constraintBottom_toTopOf="@+id/mChange"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mTeacher_Name"
-        tools:listitem="@layout/list_item_course_view"
-        />
-    <TextView
-        android:text="Change Password ?"
-        android:textAllCaps="false"
-        android:id="@+id/mChange"
-        android:textColor="@color/primary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mTableRecyclerView"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mChangePassword"
+        tools:listitem="@layout/list_item_course_view" />
 
     <ProgressBar
         android:id="@+id/mTeacherTableProgressBar"
@@ -64,9 +72,7 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mTableRecyclerView"
-        app:layout_constraintVertical_bias="0.208" />
+        app:layout_constraintTop_toTopOf="@+id/mTableRecyclerView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
