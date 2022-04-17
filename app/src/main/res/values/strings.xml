@@ -54,9 +54,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="download_sheet">Download Students Sheet</string>
-    <string name="show_Qr_code">Show Qr Code</string>
-    <string name="no_students_yet">No Students Yet</string>
     <string name="Done">Done</string>
-    <string name="details">details</string>
-
+    <string name="show_Qr_code">Show qr code</string>
+    <string name="no_students_yet">No students yet</string>
 </resources>
