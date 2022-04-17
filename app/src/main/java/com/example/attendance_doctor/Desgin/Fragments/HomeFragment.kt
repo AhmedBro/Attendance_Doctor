@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.attendance_doctor.Data.Course
 import com.example.attendance_doctor.Data.DoctorDataViewModel
 import com.example.attendance_doctor.Data.Teacher
+import com.example.attendance_doctor.Desgin.Activities.MainActivity
 import com.example.attendance_doctor.Desgin.adapters.CourseListAdapter
 import com.example.attendance_doctor.Domain.Constants
 import com.example.attendance_doctor.Domain.InitFireStore
@@ -25,6 +26,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class HomeFragment : Fragment() {
@@ -55,13 +57,13 @@ class HomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         getTeacherData()
+        doctorDataViewModel.showProgressBar()
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         doctorDataViewModel= ViewModelProvider(this).get(DoctorDataViewModel::class.java)
         mTeacherCourses= arrayListOf()
 
-        doctorDataViewModel.showProgressbar
 
         doctorDataViewModel.error.observe(viewLifecycleOwner, Observer {
             Toast.makeText(activity, it, Toast.LENGTH_LONG).show()
@@ -77,6 +79,7 @@ class HomeFragment : Fragment() {
             if (it){
                 mTeacher=doctorDataViewModel.teacherdata
                 mTeacher_Name.text=" Hello Dr/ ${mTeacher.teacherName}"
+
                 getTeacherCourses()
 
             }else{}
@@ -87,8 +90,15 @@ class HomeFragment : Fragment() {
                 Log.e("testtttt",mTeacherCourses.size.toString())
                 mTableRecyclerView.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
                 mTableRecyclerView.adapter=adapter
+
             }
+            adapter.setOnItemClickListener {course->
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToLectcuresFragment(course))
+            }
+
         })
+
+
 
     }
 

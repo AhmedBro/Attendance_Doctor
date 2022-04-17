@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/qr_code_generated"
-        android:name="com.example.attendance_doctor.Desgin.Activities.qr_code_generated"
+        android:name="com.example.attendance_doctor.Desgin.Fragments.qr_code_generated"
         android:label="fragment_qr_code_generated"
         tools:layout="@layout/fragment_qr_code_generated" />
     <fragment
@@ -56,7 +56,7 @@
     </fragment>
     <fragment
         android:id="@+id/lectcuresFragment"
-        android:name="com.example.attendance_doctor.LectcuresFragment"
+        android:name="com.example.attendance_doctor.Desgin.Fragments.LectcuresFragment"
         android:label="fragment_lectcures"
         tools:layout="@layout/fragment_lectcures" >
         <action
@@ -65,6 +65,9 @@
         <action
             android:id="@+id/action_lectcuresFragment_to_qr_code_generated"
             app:destination="@id/qr_code_generated" />
+        <argument
+            android:name="course"
+            app:argType="com.example.attendance_doctor.Data.Course" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"

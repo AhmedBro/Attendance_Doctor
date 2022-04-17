@@ -39,11 +39,17 @@ class CourseListAdapter(var allCoursesList : List<Course>?) : RecyclerView.Adapt
             onItemLongClickListener?.let { it(allCoursesList!![position]) }
             return@setOnLongClickListener true
         }
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.let { it(allCoursesList!![position]) }
+        }
     }
     override fun getItemCount(): Int {
         return allCoursesList!!.size
     }
-
+    private var onItemClickListener: ((Course) -> Unit)? = null
+    fun setOnItemClickListener(listener: (Course) -> Unit) {
+        onItemClickListener = listener
+    }
     private var onItemLongClickListener: ((Course) -> Unit)? = null
     fun setOnItemLongClickListener(listener: (Course) -> Unit) {
         onItemLongClickListener = listener
