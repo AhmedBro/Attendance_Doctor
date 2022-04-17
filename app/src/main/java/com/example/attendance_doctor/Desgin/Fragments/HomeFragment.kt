@@ -78,7 +78,7 @@ class HomeFragment : Fragment() {
         doctorDataViewModel.doneRetrieving.observe(viewLifecycleOwner, Observer {
             if (it){
                 mTeacher=doctorDataViewModel.teacherdata
-                mGuide.text=" Hello Dr/ ${mTeacher.teacherName + getString(R.string.doctor_guide)}"
+                mHello.text=" Hello Dr/ ${mTeacher.teacherName}"
                 getTeacherCourses()
 
             }else{}

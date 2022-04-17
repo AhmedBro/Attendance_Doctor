@@ -15,12 +15,27 @@
         android:background="@drawable/selector3"
         android:foregroundGravity="center_horizontal"
         android:src="@drawable/logo_admin"
-        app:layout_constraintBottom_toTopOf="@id/mGuide"
+        app:layout_constraintBottom_toTopOf="@id/mHello"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:riv_corner_radius="@dimen/_15ssp" />
 
+    <TextView
+        android:id="@+id/mHello"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10ssp"
+        android:layout_marginEnd="@dimen/_10ssp"
+        android:text=""
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintBottom_toTopOf="@id/mGuide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
     <TextView
         android:id="@+id/mGuide"
         android:layout_width="0dp"
@@ -30,12 +45,12 @@
         android:text="@string/doctor_guide"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@color/primary"
+        android:textColor="@color/gray"
         android:textSize="@dimen/_11ssp"
         app:layout_constraintBottom_toTopOf="@id/mChangePassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/mHello" />
 
     <TextView
         android:id="@+id/mChangePassword"
@@ -46,7 +61,7 @@
         android:text="@string/change_password"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@color/primary"
+        android:textColor="@color/gray"
         android:textSize="@dimen/_11ssp"
         app:layout_constraintBottom_toTopOf="@id/mTableRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"

@@ -15,8 +15,8 @@
     <string name="show_teacher_table">Show teacher table</string>
     <string name="show_student_table">Show student table</string>
     <string name="welcome">Welcome Admin</string>
-    <string name="doctor_guide">\nAs an Doctor, You can choose a course and Upload your student sheet and generate a qr code, As well as you can</string>
-    <string name="change_password"><b>Change Your Password</b></string>
+    <string name="doctor_guide"><i>As an Doctor, You can choose a course and Upload your student sheet and generate a qr code, As well as you can</i></string>
+    <string name="change_password"><b><u>Change Your Password</u></b></string>
     <string name="username">Username</string>
     <string name="forgotten_password">Forgotten password?</string>
     <string name="teacher_name">Teacher Name:</string>
