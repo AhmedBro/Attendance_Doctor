@@ -79,6 +79,8 @@ class HomeFragment : Fragment() {
             if (it){
                 mTeacher=doctorDataViewModel.teacherdata
                 mHello.text=" Hello Dr/ ${mTeacher.teacherName}"
+                mGuide.visibility=View.VISIBLE
+                mChangePassword.visibility=View.VISIBLE
                 getTeacherCourses()
 
             }else{}

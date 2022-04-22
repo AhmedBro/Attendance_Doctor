@@ -60,6 +60,12 @@
         <action
             android:id="@+id/action_studentSheet_to_qr_code_generated"
             app:destination="@id/qr_code_generated" />
+        <argument
+            android:name="lectureName"
+            app:argType="string" />
+        <argument
+            android:name="CourseCode"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/lectcuresFragment"

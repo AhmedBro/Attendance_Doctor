@@ -12,9 +12,12 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.attendance_doctor.Data.Course
 import com.example.attendance_doctor.Data.LecturesViewModel
+import com.example.attendance_doctor.Desgin.adapters.LecturesAdapter
 import com.example.attendance_doctor.R
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_lectcures.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,7 +32,7 @@ import kotlin.collections.ArrayList
 class LectcuresFragment : Fragment() {
     lateinit var mCourse: Course
     lateinit var lecturesViewModel: LecturesViewModel
-    lateinit var lectures:ArrayList<String>
+    lateinit var lectures: ArrayList<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,26 +44,54 @@ class LectcuresFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        lecturesViewModel.showProgressBar()
 
-        lifecycleScope.launch(Dispatchers.Main) {
-
-           lecturesViewModel.getLectures(mCourse.courseCode + mCourse.courseGroup)
-        }
 
     }
 
+    lateinit var adapter: LecturesAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lectures= arrayListOf()
+        lectures = arrayListOf()
         lecturesViewModel = ViewModelProvider(this).get(LecturesViewModel::class.java)
         mCourse = LectcuresFragmentArgs.fromBundle(requireArguments()).course
+        lifecycleScope.launch(Dispatchers.Main) {
+            lecturesViewModel.getLectures(mCourse.courseCode + mCourse.courseGroup)
+        }
         mCourseName.text = mCourse.courseName
         lecturesViewModel.doneRetrieving.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            if (it){
-                lectures=lecturesViewModel.lectures
-                Log.e("tttt",lectures.size.toString())
+            if (it) {
+                lectures = lecturesViewModel.lectures
+                Log.e("tttt", lectures.size.toString())
+                adapter = LecturesAdapter(lectures)
+                mStudentsRecycler.layoutManager =
+                    LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+                if (lectures.isEmpty()) {
+                    Toast.makeText(this.context, "There is no lectures yet", Toast.LENGTH_LONG)
+                        .show()
+                } else {
+                    mStudentsRecycler.adapter = adapter
+                }
+                adapter.setOnItemClickListener { Lecture ->
+                    findNavController().navigate(
+                        LectcuresFragmentDirections.actionLectcuresFragmentToStudentSheet(
+                            Lecture,
+                            mCourse.courseCode + mCourse.courseGroup
+                        )
+                    )
+
+                }
+
+                lecturesViewModel.doneRetrievingdata()
             }
 
+        })
+        lecturesViewModel.showProgressbar.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if (it) {
+                progressBar4.visibility = View.VISIBLE
+            } else {
+                progressBar4.visibility = View.GONE
+            }
         })
 
         mGenerateQr.setOnClickListener {
