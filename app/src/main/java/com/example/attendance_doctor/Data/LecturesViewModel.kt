@@ -31,6 +31,9 @@ class LecturesViewModel :ViewModel(){
     }
     var lectures = arrayListOf<String>()
     fun getLectures(CourseID:String){
+        if(lectures.isNotEmpty()){
+            lectures.clear()
+        }
 
         InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
             .collection(Constants.LECTURES).get().addOnSuccessListener {
@@ -40,8 +43,12 @@ class LecturesViewModel :ViewModel(){
                     Log.e("testLec1",i.id )
                 }
                 _doneRetrieving.value=true
+                _showProgressbar.value=false
 
 
+            }.addOnFailureListener {
+                _error.value = it.message
+                _showProgressbar.value = false
             }
     }
 }
