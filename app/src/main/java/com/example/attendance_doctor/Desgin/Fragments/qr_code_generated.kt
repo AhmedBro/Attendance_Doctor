@@ -25,6 +25,8 @@ import java.util.*
 class qr_code_generated : Fragment() {
 lateinit var qrCodeViewModel:QrCodeViewModel
 lateinit var date :String
+lateinit var courseCode :String
+
     override fun onStart() {
         super.onStart()
 
@@ -38,6 +40,7 @@ lateinit var date :String
 
         val view = inflater.inflate(R.layout.fragment_qr_code_generated, container, false)
         date=qr_code_generatedArgs.fromBundle(requireArguments()).date
+        courseCode=qr_code_generatedArgs.fromBundle(requireArguments()).courseCode
         val qrCodeViewModel = ViewModelProvider(this).get(QrCodeViewModel::class.java)
         lifecycleScope.launch(Dispatchers.Main) {
             qrCodeViewModel.generateQrCode(date)
@@ -47,6 +50,13 @@ lateinit var date :String
             if (it.width == 1000) {
                 mQrCodeImageView.setImageBitmap(it)
                 mQrCodeImageView.visibility = View.VISIBLE
+                lifecycleScope.launch(Dispatchers.Main) {
+                    qrCodeViewModel.createCollection(courseCode,date)
+
+                }
+
+
+
             }
         })
 

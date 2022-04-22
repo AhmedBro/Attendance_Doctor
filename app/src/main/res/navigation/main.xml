@@ -48,6 +48,9 @@
         <argument
             android:name="Date"
             app:argType="string" />
+        <argument
+            android:name="courseCode"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/studentSheet"

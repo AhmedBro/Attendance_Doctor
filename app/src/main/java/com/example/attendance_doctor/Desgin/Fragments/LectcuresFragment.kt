@@ -37,7 +37,7 @@ lateinit var mCourse: Course
             val calendar = Calendar.getInstance()
             val Format = SimpleDateFormat("yyyy-MM-dd ")
             val Date=Format.format(calendar.time).toString()
-            findNavController().navigate(LectcuresFragmentDirections.actionLectcuresFragmentToQrCodeGenerated(Date))
+            findNavController().navigate(LectcuresFragmentDirections.actionLectcuresFragmentToQrCodeGenerated(Date,mCourse.courseCode+mCourse.courseGroup))
         }
 
 

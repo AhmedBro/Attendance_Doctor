@@ -2,14 +2,19 @@ package com.example.attendance_doctor.Data
 
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.provider.Settings
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.attendance_doctor.Desgin.Activities.MainActivity.Companion.context
+import com.example.attendance_doctor.Domain.Constants
+import com.example.attendance_doctor.Domain.InitFireStore
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.qrcode.QRCodeWriter
+import kotlin.math.log
 
 class QrCodeViewModel : ViewModel() {
 
@@ -57,4 +62,30 @@ class QrCodeViewModel : ViewModel() {
         }
     }
 
-}
+    fun createCollection(docId: String, lectureID: String) {
+
+        InitFireStore.instance.collection(Constants.COURSES_TABLE).document(docId)
+            .collection(Constants.LECTURES).document(lectureID).collection(Constants.LECTURES_DATA)
+            .document("Dummy").set(Student("Dummy ID", "Dummy name"))
+            .addOnSuccessListener {
+            }
+        InitFireStore.instance.collection(Constants.COURSES_TABLE).document(docId)
+            .collection(Constants.LECTURES).get().addOnSuccessListener {
+                Log.e("testLec", it.isEmpty.toString())
+
+            }
+    }
+
+    }
+
+    fun create(docId: String) {
+
+        InitFireStore.instance.collection(Constants.COURSES_TABLE).document(docId)
+            .collection(Constants.LECTURES).get().addOnSuccessListener {
+                for (i in it){
+                    Log.e("testLec",i.id)
+                }
+            }
+
+    }
+
