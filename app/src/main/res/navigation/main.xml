@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    app:startDestination="@id/qr_code_generated">
+    app:startDestination="@id/splash">
 
     <fragment
         android:id="@+id/splash"
@@ -44,7 +44,11 @@
         android:id="@+id/qr_code_generated"
         android:name="com.example.attendance_doctor.Desgin.Fragments.qr_code_generated"
         android:label="fragment_qr_code_generated"
-        tools:layout="@layout/fragment_qr_code_generated" />
+        tools:layout="@layout/fragment_qr_code_generated" >
+        <argument
+            android:name="Date"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/studentSheet"
         android:name="com.example.attendance_doctor.Desgin.Fragments.StudentSheet"
