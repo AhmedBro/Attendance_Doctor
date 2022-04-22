@@ -2,6 +2,7 @@ package com.example.attendance_doctor.Desgin.Fragments
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.attendance_doctor.Data.QrCodeViewModel
 import com.example.attendance_doctor.R
+import com.example.attendance_doctor.SymmetricEncryption
 import kotlinx.android.synthetic.main.fragment_qr_code_generated.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,15 +25,17 @@ import java.util.*
 
 
 class qr_code_generated : Fragment() {
-lateinit var qrCodeViewModel:QrCodeViewModel
-lateinit var date :String
-lateinit var courseCode :String
+    lateinit var qrCodeViewModel: QrCodeViewModel
+    lateinit var date: String
+    lateinit var courseCode: String
 
     override fun onStart() {
         super.onStart()
 
 
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,11 +43,25 @@ lateinit var courseCode :String
         // Inflate the layout for this fragment
 
         val view = inflater.inflate(R.layout.fragment_qr_code_generated, container, false)
-        date=qr_code_generatedArgs.fromBundle(requireArguments()).date
-        courseCode=qr_code_generatedArgs.fromBundle(requireArguments()).courseCode
+        date = qr_code_generatedArgs.fromBundle(requireArguments()).date
+        courseCode = qr_code_generatedArgs.fromBundle(requireArguments()).courseCode
         val qrCodeViewModel = ViewModelProvider(this).get(QrCodeViewModel::class.java)
         lifecycleScope.launch(Dispatchers.Main) {
-            qrCodeViewModel.generateQrCode(date)
+            val symmetricEncryption = SymmetricEncryption()
+            val secretKey = "20180512"
+            var encryptedDate = symmetricEncryption.encrypt(
+                plaintext = date,
+                secret = secretKey
+            )
+            Log.e("encrypt" , encryptedDate)
+
+            var decryptedDate = symmetricEncryption.decrypt(
+                ciphertext = encryptedDate,
+                secret = secretKey
+            )
+            Log.e("decrypt" , decryptedDate)
+
+            qrCodeViewModel.generateQrCode(decryptedDate)
         }
 
         qrCodeViewModel.bmp.observe(viewLifecycleOwner, Observer {
@@ -51,10 +69,9 @@ lateinit var courseCode :String
                 mQrCodeImageView.setImageBitmap(it)
                 mQrCodeImageView.visibility = View.VISIBLE
                 lifecycleScope.launch(Dispatchers.Main) {
-                    qrCodeViewModel.createCollection(courseCode,date)
+                    qrCodeViewModel.createCollection(courseCode, date)
 
                 }
-
 
 
             }

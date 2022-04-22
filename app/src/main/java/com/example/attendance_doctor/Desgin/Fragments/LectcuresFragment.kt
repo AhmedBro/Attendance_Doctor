@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_lectcures.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.lang.StringBuilder
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -95,11 +96,27 @@ class LectcuresFragment : Fragment() {
 
         mGenerateQr.setOnClickListener {
             val calendar = Calendar.getInstance()
-            val Format = SimpleDateFormat("yyyy-MM-dd ")
+            val Format = SimpleDateFormat("yyyy-MM-dd")
             val Date = Format.format(calendar.time).toString()
+            val date : StringBuilder = StringBuilder()
+            for (i in Date){
+                when(i){
+                    '٠' -> date.append('0')
+                    '١' -> date.append('1')
+                    '٢' -> date.append('2')
+                    '٣' -> date.append('3')
+                    '٤' -> date.append('4')
+                    '٥' -> date.append('5')
+                    '٦' -> date.append('6')
+                    '٧' -> date.append('7')
+                    '٨' -> date.append('8')
+                    '٩' -> date.append('9')
+                    else -> date.append('-')
+                }
+            }
             findNavController().navigate(
                 LectcuresFragmentDirections.actionLectcuresFragmentToQrCodeGenerated(
-                    Date,
+                    date.toString(),
                     mCourse.courseCode + mCourse.courseGroup
                 )
             )
