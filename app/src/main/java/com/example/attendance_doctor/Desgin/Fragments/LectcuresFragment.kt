@@ -111,6 +111,16 @@ class LectcuresFragment : Fragment() {
                     '٧' -> date.append('7')
                     '٨' -> date.append('8')
                     '٩' -> date.append('9')
+                    '0' -> date.append('0')
+                    '1' -> date.append('1')
+                    '2' -> date.append('2')
+                    '3' -> date.append('3')
+                    '4' -> date.append('4')
+                    '5' -> date.append('5')
+                    '6' -> date.append('6')
+                    '7' -> date.append('7')
+                    '8' -> date.append('8')
+                    '9' -> date.append('9')
                     else -> date.append('-')
                 }
             }

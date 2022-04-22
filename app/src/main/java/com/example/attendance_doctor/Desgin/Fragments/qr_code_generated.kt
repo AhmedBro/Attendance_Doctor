@@ -61,7 +61,7 @@ class qr_code_generated : Fragment() {
             )
             Log.e("decrypt" , decryptedDate)
 
-            qrCodeViewModel.generateQrCode(decryptedDate)
+            qrCodeViewModel.generateQrCode(encryptedDate)
         }
 
         qrCodeViewModel.bmp.observe(viewLifecycleOwner, Observer {
