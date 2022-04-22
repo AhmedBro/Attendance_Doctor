@@ -17,14 +17,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/mLogoIV"
                 android:layout_width="0dp"
-                android:layout_height="220dp"
+                android:layout_height="@dimen/_300ssp"
                 android:layout_margin="@dimen/_10ssp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/_16ssp"
                 android:background="@drawable/selector3"
                 android:foregroundGravity="center_horizontal"
                 android:src="@drawable/logo"
@@ -42,7 +42,7 @@
                 android:background="@color/white"
                 android:src="@drawable/qr_code"
                 android:visibility="invisible"
-                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mLogoIV"
