@@ -68,24 +68,14 @@ class QrCodeViewModel : ViewModel() {
             .collection(Constants.LECTURES).document(lectureID).collection(Constants.LECTURES_DATA)
             .document("Dummy").set(Student("Dummy ID", "Dummy name"))
             .addOnSuccessListener {
+                createDummyField(docId, lectureID)
             }
+    }
+
+    fun createDummyField(docId: String, lectureID: String) {
         InitFireStore.instance.collection(Constants.COURSES_TABLE).document(docId)
-            .collection(Constants.LECTURES).get().addOnSuccessListener {
-                Log.e("testLec", it.isEmpty.toString())
-
-            }
+            .collection(Constants.LECTURES).document(lectureID)
+            .set(Student("DummyData", "DummyData"))
     }
 
-    }
-
-    fun create(docId: String) {
-
-        InitFireStore.instance.collection(Constants.COURSES_TABLE).document(docId)
-            .collection(Constants.LECTURES).get().addOnSuccessListener {
-                for (i in it){
-                    Log.e("testLec",i.id)
-                }
-            }
-
-    }
-
+}
