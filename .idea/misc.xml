@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Attendance_Doctor/app/src/main/res/layout-ldrtl/student_list_item_view.xml" value="0.25" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/fragment_change_password.xml" value="0.20416666666666666" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/fragment_lectcures.xml" value="0.20416666666666666" />
+        <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/fragment_lectcures.xml" value="0.16" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/fragment_qr_code_generated.xml" value="0.20416666666666666" />
-        <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/fragment_student_sheet.xml" value="0.20416666666666666" />
+        <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/fragment_student_sheet.xml" value="0.33" />
+        <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/student_list_item_view.xml" value="0.25" />
         <entry key="..\:/GP/DoctorApp/app/src/main/res/drawable/button_forget_password.xml" value="0.27291666666666664" />
         <entry key="..\:/GP/DoctorApp/app/src/main/res/drawable/round_btn.xml" value="0.27291666666666664" />
         <entry key="..\:/GP/DoctorApp/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />

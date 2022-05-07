@@ -5,45 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
+    <TextView
+        android:id="@+id/mStudentName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_30ssp"
+        android:textAlignment="textStart"
+        android:textColor="@color/primary"
+        android:textDirection="rtl"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/mStudentId"
+        app:layout_constraintEnd_toStartOf="@id/mStudentId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="محمد عادل عبدالله احمد" />
+
+
     <TextView
         android:id="@+id/mStudentId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_30ssp"
+        android:layout_marginEnd="@dimen/_30ssp"
         android:layout_marginBottom="@dimen/_20ssp"
         android:textAlignment="textStart"
         android:textColor="@color/primary"
         android:textDirection="ltr"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/mStudentName"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/mStudentName"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="20180512" />
 
-    <TextView
-        android:id="@+id/mStudentName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_30ssp"
-        android:textAlignment="textStart"
-        android:textColor="@color/primary"
-        android:textDirection="rtl"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/mStudentId"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/mStudentId"
-        app:layout_constraintTop_toTopOf="@id/mStudentId"
-        tools:text="محمد عادل عبدالله احمد" />
 
     <View
         android:layout_width="0dp"
         android:layout_height="@dimen/_1ssp"
         android:background="@color/light_gray"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/mStudentName"
-        app:layout_constraintStart_toStartOf="@id/mStudentId"
-        app:layout_constraintTop_toBottomOf="@id/mStudentId">
+        app:layout_constraintEnd_toEndOf="@id/mStudentId"
+        app:layout_constraintStart_toStartOf="@id/mStudentName"
+        app:layout_constraintTop_toBottomOf="@id/mStudentName">
 
     </View>
 </androidx.constraintlayout.widget.ConstraintLayout>
