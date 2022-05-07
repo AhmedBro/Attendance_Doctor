@@ -29,6 +29,9 @@ class LectureAttendanceViewModel :ViewModel(){
     fun showProgressBar() {
         _showProgressbar.postValue(true)
     }
+    fun hideProgressBar() {
+        _showProgressbar.postValue(false)
+    }
     var Students = arrayListOf<Student>()
 
     fun getLectures(CourseID:String,LectureID:String){
