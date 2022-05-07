@@ -1,7 +1,11 @@
 package com.example.attendance_doctor.Desgin.Fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +19,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.attendance_doctor.Data.Course
 import com.example.attendance_doctor.Data.LecturesViewModel
+import com.example.attendance_doctor.Desgin.Activities.MainActivity
 import com.example.attendance_doctor.Desgin.adapters.LecturesAdapter
 import com.example.attendance_doctor.R
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -98,9 +103,9 @@ class LectcuresFragment : Fragment() {
             val calendar = Calendar.getInstance()
             val Format = SimpleDateFormat("yyyy-MM-dd")
             val Date = Format.format(calendar.time).toString()
-            val date : StringBuilder = StringBuilder()
-            for (i in Date){
-                when(i){
+            val date: StringBuilder = StringBuilder()
+            for (i in Date) {
+                when (i) {
                     '٠' -> date.append('0')
                     '١' -> date.append('1')
                     '٢' -> date.append('2')

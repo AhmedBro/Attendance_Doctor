@@ -18,10 +18,10 @@
         <entry key="..\:/GP/DoctorApp/app/src/main/res/layout/fragment_login.xml" value="0.25677083333333334" />
         <entry key="..\:/GP/DoctorApp/app/src/main/res/layout/fragment_qr_code_generated.xml" value="0.1" />
         <entry key="..\:/GP/DoctorApp/app/src/main/res/layout/fragment_splash.xml" value="0.25677083333333334" />
-        <entry key="..\:/GP/DoctorApp/app/src/main/res/layout/fragment_student_sheet.xml" value="0.20652173913043478" />
+        <entry key="..\:/GP/DoctorApp/app/src/main/res/layout/fragment_student_sheet.xml" value="0.2" />
         <entry key="..\:/GP/DoctorApp/app/src/main/res/layout/lectcure_shap.xml" value="0.2" />
         <entry key="..\:/GP/DoctorApp/app/src/main/res/layout/list_item_course_view.xml" value="0.20108695652173914" />
-        <entry key="..\:/GP/DoctorApp/app/src/main/res/layout/student_list_item_view.xml" value="0.16799999999999998" />
+        <entry key="..\:/GP/DoctorApp/app/src/main/res/layout/student_list_item_view.xml" value="0.2" />
         <entry key="..\:/GP/DoctorApp/app/src/main/res/layout/test.xml" value="0.20108695652173914" />
       </map>
     </option>
