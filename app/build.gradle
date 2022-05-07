@@ -48,7 +48,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation("androidx.navigation:navigation-compose:2.4.0-beta02")
     implementation 'com.google.firebase:firebase-auth-ktx:20.0.4'
-    implementation fileTree(dir: 'C:\\Users\\Mohamed Ashraf\\Downloads', include: ['*.aar', '*.jar'], exclude: [])
+    implementation files('libs\\poishadow-all.jar')
 
     testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
