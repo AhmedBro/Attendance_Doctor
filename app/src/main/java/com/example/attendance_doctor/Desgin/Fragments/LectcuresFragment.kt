@@ -1,5 +1,6 @@
 package com.example.attendance_doctor.Desgin.Fragments
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -22,11 +23,17 @@ import com.example.attendance_doctor.Data.LecturesViewModel
 import com.example.attendance_doctor.Desgin.Activities.MainActivity
 import com.example.attendance_doctor.Desgin.adapters.LecturesAdapter
 import com.example.attendance_doctor.R
+//import com.monitorjbl.xlsx.StreamingReader
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_lectcures.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.apache.poi.ss.usermodel.Workbook
+import java.io.File
+import java.io.FileInputStream
+import java.io.InputStream
 import java.lang.StringBuilder
+import java.net.URI
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -38,6 +45,7 @@ class LectcuresFragment : Fragment() {
     lateinit var mCourse: Course
     lateinit var lecturesViewModel: LecturesViewModel
     lateinit var lectures: ArrayList<String>
+    val GET_FIle_CODE = 1000
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -138,6 +146,37 @@ class LectcuresFragment : Fragment() {
         }
 
 
+        mUploadStudentSheet.setOnClickListener {
+            getFile()
+        }
+
+    }
+
+    private fun getFile() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        startActivityForResult(intent, GET_FIle_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode==GET_FIle_CODE && requestCode== Activity.RESULT_OK){
+            val `is`: InputStream = FileInputStream(File(URI(data!!.getData().toString())))
+//            val workbook: Workbook = StreamingReader.builder()
+//                .rowCacheSize(100) // number of rows to keep in memory (defaults to 10)
+//                .bufferSize(4096) // buffer size to use when reading InputStream to file (defaults to 1024)
+//                .open(`is`)
+//
+//            for (sheet in workbook) {
+//                System.out.println(sheet.sheetName)
+//                for (r in sheet) {
+//                    for (c in r) {
+//                        System.out.println(c.stringCellValue)
+//                    }
+//                }
+//            }
+        }
     }
 
 }
