@@ -8,6 +8,9 @@ plugins {
 apply plugin: 'com.google.gms.google-services'
 
 android {
+    packagingOptions {
+        exclude 'META-INF/INDEX.LIST'
+    }
     compileSdk 31
 
     defaultConfig {
