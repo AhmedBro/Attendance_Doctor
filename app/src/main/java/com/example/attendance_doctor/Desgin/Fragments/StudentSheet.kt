@@ -33,6 +33,8 @@ import java.io.FileOutputStream
 import androidx.core.app.ActivityCompat.startActivityForResult
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Color.red
 import android.net.Uri
 import android.provider.Settings
 import com.example.attendance_doctor.Desgin.Activities.MainActivity
@@ -136,38 +138,28 @@ var adapter = StudentAdapter()
                     .toString() + "/Attendance/${CourseID}", "/${LectureID}.xls"
             )
             var hSSFWorkbook = HSSFWorkbook()
-            var style = hSSFWorkbook.createCellStyle()
-            style.setFillForegroundColor(IndexedColors.RED.getIndex())
-            style.setFillPattern(FillPatternType.SOLID_FOREGROUND)
-             style.setAlignment(HorizontalAlignment.CENTER)
-            var style2=hSSFWorkbook.createCellStyle()
-             style2.setAlignment(HorizontalAlignment.CENTER)
-
             var hssSheet = hSSFWorkbook.createSheet("Attendance")
-             hssSheet.setColumnWidth(0,23*256)
+             hssSheet.setColumnWidth(0,24*256)
             hssSheet.setColumnWidth(1,20*256)
             var nameRow = hssSheet.createRow(0)
             var IDRow = hssSheet.createRow(0)
             nameRow.createCell(0).apply {
                 setCellValue("Student Name")
-                setCellStyle(style)
+
             }
             IDRow.createCell(1).apply {
                 setCellValue("ID")
-                setCellStyle(style)
             }
             for (i in 0 until StudentList.size) {
                 Log.e("check", StudentList[i].StudentName.toString())
                 hssSheet.createRow(i + 1).apply {
 
                     createCell(1).apply {
-                        setCellStyle(style2)
                         setCellValue(StudentList[i].StudentID)
 
                     }
                     createCell(0).apply {
                         setCellValue(StudentList[i].StudentName.toString())
-                        setCellStyle(style2)
                     }
                 }
             }

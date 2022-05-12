@@ -28,7 +28,6 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_lectcures.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.apache.poi.ss.usermodel.Workbook
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStream
@@ -162,20 +161,7 @@ class LectcuresFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode==GET_FIle_CODE && requestCode== Activity.RESULT_OK){
-            val `is`: InputStream = FileInputStream(File(URI(data!!.getData().toString())))
-//            val workbook: Workbook = StreamingReader.builder()
-//                .rowCacheSize(100) // number of rows to keep in memory (defaults to 10)
-//                .bufferSize(4096) // buffer size to use when reading InputStream to file (defaults to 1024)
-//                .open(`is`)
-//
-//            for (sheet in workbook) {
-//                System.out.println(sheet.sheetName)
-//                for (r in sheet) {
-//                    for (c in r) {
-//                        System.out.println(c.stringCellValue)
-//                    }
-//                }
-//            }
+
         }
     }
 
