@@ -82,6 +82,9 @@
         <argument
             android:name="CourseCode"
             app:argType="string" />
+        <argument
+            android:name="CourseCodeOnly"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/lectcuresFragment"

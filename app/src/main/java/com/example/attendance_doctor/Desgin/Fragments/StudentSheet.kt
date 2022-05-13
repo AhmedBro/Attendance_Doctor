@@ -87,7 +87,8 @@ var adapter = StudentAdapter()
             Toast.makeText(this.context,it,Toast.LENGTH_LONG).show()
         })
         view.findViewById<Button>(R.id.mShowQrCodeButton).setOnClickListener {
-            findNavController().navigate(StudentSheetDirections.actionStudentSheetToQrCodeGenerated(LectureID,CourseID))
+            findNavController().navigate(StudentSheetDirections.actionStudentSheetToQrCodeGenerated(LectureID+"*${StudentSheetArgs.fromBundle(requireArguments()).courseCodeOnly}"
+                ,CourseID))
         }
         view.findViewById<Button>(R.id.mDownloadSheet).setOnClickListener {
             lectureAttendanceViewModel.showProgressBar()

@@ -90,7 +90,7 @@ class LectcuresFragment : Fragment() {
                     findNavController().navigate(
                         LectcuresFragmentDirections.actionLectcuresFragmentToStudentSheet(
                             Lecture,
-                            mCourse.courseCode + mCourse.courseGroup
+                            mCourse.courseCode + mCourse.courseGroup,mCourse.courseCode!!
                         )
                     )
 
