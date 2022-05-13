@@ -39,7 +39,8 @@ class LecturesViewModel :ViewModel(){
             .collection(Constants.LECTURES).get().addOnSuccessListener {
                 Log.e("testLec", it.size().toString())
                 for (i in it){
-                    lectures.add(i.id)
+                    var lecture = i.id.substringBefore("*")
+                    lectures.add(lecture)
                     Log.e("testLec1",i.id )
                 }
                 _doneRetrieving.value=true
