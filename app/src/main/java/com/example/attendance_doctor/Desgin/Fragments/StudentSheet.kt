@@ -65,7 +65,7 @@ var adapter = StudentAdapter()
         val manager = LinearLayoutManager(this.context , LinearLayoutManager.VERTICAL , false)
         rv.layoutManager = manager
         lifecycleScope.launch(Dispatchers.Main) {
-            lectureAttendanceViewModel.getLectures(CourseID, LectureID)
+            lectureAttendanceViewModel.getLectures(CourseID, LectureID+"*${StudentSheetArgs.fromBundle(requireArguments()).courseCodeOnly}")
         }
         lectureAttendanceViewModel.doneRetrieving.observe(viewLifecycleOwner, Observer {
             if (it){
