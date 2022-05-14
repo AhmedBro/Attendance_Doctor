@@ -1,31 +1,25 @@
 package com.example.attendance_doctor.Desgin.Fragments
 
+//import com.monitorjbl.xlsx.StreamingReader
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.provider.Settings
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.attendance_doctor.Data.Course
 import com.example.attendance_doctor.Data.LecturesViewModel
-import com.example.attendance_doctor.Desgin.Activities.MainActivity
 import com.example.attendance_doctor.Desgin.adapters.LecturesAdapter
 import com.example.attendance_doctor.R
 import com.monitorjbl.xlsx.StreamingReader
-//import com.monitorjbl.xlsx.StreamingReader
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_lectcures.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,14 +27,9 @@ import org.apache.poi.ss.usermodel.Workbook
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStream
-import java.lang.StringBuilder
-import java.net.URI
-import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class LectcuresFragment : Fragment() {
     lateinit var mCourse: Course
@@ -161,22 +150,36 @@ class LectcuresFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+//        Log.e("EEEEEEEEEEEEEEEEE" , data!!.getData().toString())
 
-        if (requestCode==GET_FIle_CODE && requestCode== Activity.RESULT_OK){
-            val `is`: InputStream = FileInputStream(File(URI(data!!.getData().toString())))
-            val workbook: Workbook = StreamingReader.builder()
-                .rowCacheSize(100) // number of rows to keep in memory (defaults to 10)
-                .bufferSize(4096) // buffer size to use when reading InputStream to file (defaults to 1024)
-                .open(`is`)
+        if (requestCode==GET_FIle_CODE && resultCode== Activity.RESULT_OK){
 
-            for (sheet in workbook) {
-                System.out.println(sheet.sheetName)
-                for (r in sheet) {
-                    for (c in r) {
-                        System.out.println(c.stringCellValue)
-                    }
-                }
-            }
+            val path = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOCUMENTS
+            )
+            val file: File? = File(path, "Demo.xlsx")
+
+            val file2 = File(
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
+                "Demo.xlsx"
+            )
+
+            Log.e("EEEEEEEEEEEEEEEEE" , File(data!!.data!!.path).mkdirs().toString())
+
+//            val `is`: InputStream = FileInputStream(file)
+//            val workbook: Workbook = StreamingReader.builder()
+//                .rowCacheSize(100) // number of rows to keep in memory (defaults to 10)
+//                .bufferSize(4096) // buffer size to use when reading InputStream to file (defaults to 1024)
+//                .open(`is`)
+//
+//            for (sheet in workbook) {
+//                System.out.println(sheet.sheetName)
+//                for (r in sheet) {
+//                    for (c in r) {
+//                        System.out.println(c.stringCellValue)
+//                    }
+//                }
+//            }
         }
     }
 
