@@ -3,8 +3,10 @@ package com.example.attendance_doctor.Desgin.Activities
 import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import com.example.attendance_doctor.R
 
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
+    @RequiresApi(Build.VERSION_CODES.R)
     private fun externalStoragePermission()=
         ActivityCompat.checkSelfPermission(this, Manifest.permission.MANAGE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED
  private fun StoragePermission()=
@@ -37,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 private fun readStoragePermission()=
         ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED
 
+    @RequiresApi(Build.VERSION_CODES.R)
     private fun requestPermissions(){
         var perm= mutableListOf<String>()
         if (!externalStoragePermission()){

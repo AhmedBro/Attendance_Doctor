@@ -2,7 +2,10 @@ package com.example.attendance_doctor.Desgin.Fragments
 
 //import com.monitorjbl.xlsx.StreamingReader
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -19,16 +22,29 @@ import com.example.attendance_doctor.Data.Course
 import com.example.attendance_doctor.Data.LecturesViewModel
 import com.example.attendance_doctor.Desgin.adapters.LecturesAdapter
 import com.example.attendance_doctor.R
-import com.monitorjbl.xlsx.StreamingReader
 import kotlinx.android.synthetic.main.fragment_lectcures.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.apache.poi.ss.usermodel.Workbook
 import java.io.File
-import java.io.FileInputStream
-import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.*
+
+import android.os.Build
+import android.provider.Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION
+import android.provider.MediaStore
+import android.provider.DocumentsContract
+
+import android.content.ContentUris
+import com.example.attendance_doctor.Desgin.Activities.MainActivity
+import com.example.attendance_doctor.Desgin.util.RealPathUtil
+import com.monitorjbl.xlsx.StreamingReader
+import org.apache.poi.hssf.usermodel.HSSFWorkbook
+import org.apache.poi.openxml4j.opc.OPCPackage
+import org.apache.poi.ss.usermodel.Workbook
+import org.apache.poi.ss.usermodel.WorkbookFactory
+import org.apache.poi.xssf.usermodel.XSSFWorkbook
+import java.io.FileInputStream
+import java.io.InputStream
 
 
 class LectcuresFragment : Fragment() {
@@ -135,52 +151,77 @@ class LectcuresFragment : Fragment() {
             )
         }
 
-
+        askForPermissions()
         mUploadStudentSheet.setOnClickListener {
+
             getFile()
         }
 
     }
 
     private fun getFile() {
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
-        intent.type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+        intent.type = "application/vnd.ms-excel"
+        intent.addCategory(Intent.CATEGORY_OPENABLE)
         startActivityForResult(intent, GET_FIle_CODE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-//        Log.e("EEEEEEEEEEEEEEEEE" , data!!.getData().toString())
+        Log.e("EEEEEEEEEEEEEEEEE" , data!!.getData().toString())
 
         if (requestCode==GET_FIle_CODE && resultCode== Activity.RESULT_OK){
 
-            val path = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DOCUMENTS
-            )
-            val file: File? = File(path, "Demo.xlsx")
-
-            val file2 = File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
-                "Demo.xlsx"
-            )
-
-            Log.e("EEEEEEEEEEEEEEEEE" , File(data!!.data!!.path).mkdirs().toString())
-
-//            val `is`: InputStream = FileInputStream(file)
-//            val workbook: Workbook = StreamingReader.builder()
-//                .rowCacheSize(100) // number of rows to keep in memory (defaults to 10)
-//                .bufferSize(4096) // buffer size to use when reading InputStream to file (defaults to 1024)
-//                .open(`is`)
+//            val path = Environment.getExternalStoragePublicDirectory(
+//                Environment.DIRECTORY_DOCUMENTS
+//            )
+//            val file: File? = File(path, data!!.data!!.path)
 //
-//            for (sheet in workbook) {
-//                System.out.println(sheet.sheetName)
-//                for (r in sheet) {
-//                    for (c in r) {
-//                        System.out.println(c.stringCellValue)
-//                    }
-//                }
+//            if (!file!!.parentFile.exists()) {
+//                file!!.parentFile.mkdirs()
 //            }
+//            if (!file!!.exists()) {
+//                file.createNewFile()
+//            }
+
+
+
+            Log.e("EEEEEEEEEEEEEEEEE" , RealPathUtil.getRealPath(MainActivity.context!!,data.getData()!!).toString())
+            Log.e("EEEEEEEEEEEEEEEEE" , data.data.toString())
+
+            val t: InputStream = FileInputStream(RealPathUtil.getRealPath(MainActivity.context!!,data.getData()!!))
+            try {
+                val wb = WorkbookFactory.create(t)
+                for (sheet in wb) {
+                    System.out.println(sheet.sheetName)
+                    for (r in sheet) {
+                        for (c in r) {
+                            System.out.println(c.stringCellValue)
+                        }
+                    }
+                }
+            }
+            catch (E:Exception){
+                Log.e("EEEEEEEEEEEEEEEEE" , E.message.toString())
+
+            }
+
+
+
         }
     }
+    fun askForPermissions() {
+        if (Build.VERSION.SDK_INT >= 30) {
+            if (!Environment.isExternalStorageManager()) {
+                val getpermission = Intent()
+                getpermission.action = ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION
+                startActivity(getpermission)
+            }
+        }
+    }
+
+
+
+
 
 }
