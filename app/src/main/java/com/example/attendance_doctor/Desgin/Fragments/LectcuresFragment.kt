@@ -112,6 +112,13 @@ class LectcuresFragment : Fragment() {
                 progressBar4.visibility = View.GONE
             }
         })
+        lecturesViewModel.noLectures.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if (it) {
+                mHint.visibility = View.VISIBLE
+            } else {
+                mHint.visibility = View.GONE
+            }
+        })
 
         mGenerateQr.setOnClickListener {
             val calendar = Calendar.getInstance()

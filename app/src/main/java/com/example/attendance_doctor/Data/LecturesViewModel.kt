@@ -22,6 +22,10 @@ class LecturesViewModel :ViewModel(){
     val doneRetrieving: LiveData<Boolean>
         get() = _doneRetrieving
 
+    private val _noLectures = MutableLiveData<Boolean>()
+    val noLectures: LiveData<Boolean>
+        get() = _noLectures
+
     fun doneRetrievingdata() {
         _doneRetrieving.value = false
     }
@@ -38,6 +42,7 @@ class LecturesViewModel :ViewModel(){
         InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
             .collection(Constants.LECTURES).get().addOnSuccessListener {
                 Log.e("testLec", it.size().toString())
+                _noLectures.value = it.isEmpty
                 for (i in it){
                     var lecture = i.id.substringBefore("*")
                     lectures.add(lecture)

@@ -61,5 +61,6 @@
     <string name="details">details</string>
     <string name="generate_qr_code">Generate QR Code</string>
     <string name="upload_student_sheet">Upload Student sheet</string>
+    <string name="hint_text">Note: to upload the student sheet, The sheet have to be in <b>Attendance</b> folder in your Internal Storage to be able to upload it.</string>
 
 </resources>

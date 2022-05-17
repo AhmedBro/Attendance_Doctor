@@ -16,7 +16,7 @@
         android:background="@drawable/selector3"
         android:foregroundGravity="center_horizontal"
         android:src="@drawable/logo_admin"
-        app:layout_constraintBottom_toTopOf="@id/mStudentsRecycler"
+        app:layout_constraintBottom_toTopOf="@id/mCourseName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -34,11 +34,27 @@
         android:textColor="@color/gray"
         android:textSize="@dimen/_11ssp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/mStudentsRecycler"
+        app:layout_constraintBottom_toTopOf="@id/mHint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mLogo" />
 
+    <TextView
+        android:id="@+id/mHint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10ssp"
+        android:layout_marginEnd="@dimen/_10ssp"
+        android:text="@string/hint_text"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_11ssp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/mStudentsRecycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mCourseName" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mStudentsRecycler"
@@ -50,7 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mLogo"
+        app:layout_constraintTop_toBottomOf="@+id/mHint"
         tools:listitem="@layout/lectcure_shap" />
 
     <ProgressBar
