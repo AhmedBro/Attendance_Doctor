@@ -9,7 +9,7 @@ import com.example.attendance_doctor.Domain.InitFireStore
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.toObjects
 
-class LecturesViewModel :ViewModel(){
+class LecturesViewModel : ViewModel() {
 
     private val _showProgressbar = MutableLiveData<Boolean>()
     val showProgressbar: LiveData<Boolean>
@@ -30,19 +30,22 @@ class LecturesViewModel :ViewModel(){
     fun doneRetrievingdata() {
         _doneRetrieving.value = false
     }
+
     fun doneAdding() {
-        _error.value=null
+        _error.value = null
     }
 
     fun showProgressBar() {
         _showProgressbar.postValue(true)
     }
+
     fun hideProgressBar() {
         _showProgressbar.postValue(false)
     }
+
     var lectures = arrayListOf<String>()
-    fun getLectures(CourseID:String){
-        if(lectures.isNotEmpty()){
+    fun getLectures(CourseID: String) {
+        if (lectures.isNotEmpty()) {
             lectures.clear()
         }
 
@@ -50,13 +53,13 @@ class LecturesViewModel :ViewModel(){
             .collection(Constants.LECTURES).get().addOnSuccessListener {
                 Log.e("testLec", it.size().toString())
                 _noLectures.value = it.isEmpty
-                for (i in it){
+                for (i in it) {
                     var lecture = i.id.substringBefore("*")
                     lectures.add(lecture)
-                    Log.e("testLec1",i.id )
+                    Log.e("testLec1", i.id)
                 }
-                _doneRetrieving.value=true
-                _showProgressbar.value=false
+                _doneRetrieving.value = true
+                _showProgressbar.value = false
 
 
             }.addOnFailureListener {
@@ -65,34 +68,42 @@ class LecturesViewModel :ViewModel(){
             }
     }
 
-    fun addCourseToStudent(students:List<Student>,courseName:String){
-        _showProgressbar.value=true
-        for (student in students){
-            Log.e("coursename",student.StudentID!!)
-            InitFireStore.instance.collection(Constants.STUDENTS_TABLE).document(student.StudentID!!.substring(0,4)).collection(Constants.STUDENT_DATA).document(
-                student.StudentID!!
-            ).update("coursesId", FieldValue.arrayUnion(courseName)).addOnFailureListener {
-               
+    fun addCourseToStudent(students: List<Student>, courseName: String) {
+        _showProgressbar.value = true
+        for (student in students) {
+            Log.e("coursename", student.StudentID!!)
+            InitFireStore.instance.collection(Constants.STUDENTS_TABLE)
+                .document(student.StudentID!!.substring(0, 4)).collection(Constants.STUDENT_DATA)
+                .document(
+                    student.StudentID!!
+                ).update("coursesId", FieldValue.arrayUnion(courseName)).addOnFailureListener {
+
             }
         }
 
 
     }
-    fun addNameToStudent(students:List<Student>){
-        for (index in 0..students.size-1){
 
-            InitFireStore.instance.collection(Constants.STUDENTS_TABLE).document(students[index].StudentID!!.substring(0,4)).collection(Constants.STUDENT_DATA).document(
+    fun addNameToStudent(students: List<Student>) {
+        for (index in 0..students.size - 1) {
+
+            InitFireStore.instance.collection(Constants.STUDENTS_TABLE)
+                .document(students[index].StudentID!!.substring(0, 4))
+                .collection(Constants.STUDENT_DATA).document(
                 students[index].StudentID!!
-            ).update("studentName",students[index].StudentName).addOnSuccessListener {
-                if (index==students.size-1 ){
-                    _error.value="successfully add student to this course"
-                    _showProgressbar.value=false
+            ).update("studentName", students[index].StudentName).addOnSuccessListener {
+                if (index == students.size - 1) {
+                    _error.value = "successfully add student to this course"
+                    _showProgressbar.value = false
 
                 }
             }.addOnFailureListener {
-                _error.value=it.message
-                _showProgressbar.value=false
-
+                if (it.message?.substring(0, 9).equals("NOT_FOUND")) {
+                    _error.value = "Not Existing Student"
+                } else {
+                    _error.value = it.message
+                }
+                _showProgressbar.value = false
             }
 
         }
