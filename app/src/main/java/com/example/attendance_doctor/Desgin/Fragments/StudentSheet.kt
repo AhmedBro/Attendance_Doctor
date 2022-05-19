@@ -75,9 +75,9 @@ class StudentSheet : Fragment() {
         lectureAttendanceViewModel.doneRetrieving.observe(viewLifecycleOwner, Observer {
             if (it) {
                 StudentList = lectureAttendanceViewModel.Students
-                if (StudentList.isEmpty()){
+                if (StudentList.isEmpty()) {
                     mNoStudentsTV.visibility = View.VISIBLE
-                }else{
+                } else {
                     mNoStudentsTV.visibility = View.GONE
                 }
                 adapter.submitList(StudentList)
