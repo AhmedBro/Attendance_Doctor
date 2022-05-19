@@ -98,8 +98,9 @@ class LecturesViewModel : ViewModel() {
 
                 }
             }.addOnFailureListener {
+                    Log.e("error" , it.message.toString())
                 if (it.message?.substring(0, 9).equals("NOT_FOUND")) {
-                    _error.value = "Not Existing Student"
+                    _error.value = "Not Existing Student"+" ${students[index].StudentID}"
                 } else {
                     _error.value = it.message
                 }
