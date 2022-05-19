@@ -13,6 +13,7 @@ class Constants {
         val LECTURES="lectures"
         val LECTURES_DATA="lecturedata"
         val TEACHER_COURSES = "Courses"
+        val CODE="472512"
 
     }
 }

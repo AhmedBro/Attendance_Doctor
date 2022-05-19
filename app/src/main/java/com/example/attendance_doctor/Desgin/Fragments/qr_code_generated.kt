@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.attendance_doctor.Data.QrCodeViewModel
+import com.example.attendance_doctor.Domain.Constants
 import com.example.attendance_doctor.R
 import com.example.attendance_doctor.SymmetricEncryption
 import kotlinx.android.synthetic.main.fragment_qr_code_generated.*
@@ -48,16 +49,15 @@ class qr_code_generated : Fragment() {
         val qrCodeViewModel = ViewModelProvider(this).get(QrCodeViewModel::class.java)
         lifecycleScope.launch(Dispatchers.Main) {
             val symmetricEncryption = SymmetricEncryption()
-            val secretKey = "20180512"
             var encryptedDate = symmetricEncryption.encrypt(
                 plaintext = date,
-                secret = secretKey
+                secret = Constants.CODE
             )
             Log.e("encrypt" , encryptedDate)
 
             var decryptedDate = symmetricEncryption.decrypt(
                 ciphertext = encryptedDate,
-                secret = secretKey
+                secret = Constants.CODE
             )
             Log.e("decrypt" , decryptedDate)
 

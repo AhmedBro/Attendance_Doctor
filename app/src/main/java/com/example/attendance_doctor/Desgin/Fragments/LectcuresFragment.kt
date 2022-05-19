@@ -2,10 +2,7 @@ package com.example.attendance_doctor.Desgin.Fragments
 
 //import com.monitorjbl.xlsx.StreamingReader
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.database.Cursor
-import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -25,26 +22,19 @@ import com.example.attendance_doctor.R
 import kotlinx.android.synthetic.main.fragment_lectcures.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
 import android.os.Build
 import android.provider.Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION
-import android.provider.MediaStore
-import android.provider.DocumentsContract
 
-import android.content.ContentUris
+import com.example.attendance_doctor.Data.Student
 import com.example.attendance_doctor.Desgin.Activities.MainActivity
 import com.example.attendance_doctor.Desgin.util.RealPathUtil
-import com.monitorjbl.xlsx.StreamingReader
-import org.apache.poi.hssf.usermodel.HSSFWorkbook
-import org.apache.poi.openxml4j.opc.OPCPackage
-import org.apache.poi.ss.usermodel.Workbook
-import org.apache.poi.ss.usermodel.WorkbookFactory
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.FileInputStream
 import java.io.InputStream
+import kotlin.collections.ArrayList
 
 
 class LectcuresFragment : Fragment() {
@@ -63,8 +53,6 @@ class LectcuresFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        lecturesViewModel.showProgressBar()
-
 
     }
 
@@ -78,6 +66,13 @@ class LectcuresFragment : Fragment() {
             lecturesViewModel.getLectures(mCourse.courseCode + mCourse.courseGroup)
         }
         mCourseName.text = mCourse.courseName
+        lecturesViewModel.error.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if (it != null) {
+                Toast.makeText(this.requireContext(), it, Toast.LENGTH_SHORT).show()
+                lecturesViewModel.doneAdding()
+            }
+
+        })
         lecturesViewModel.doneRetrieving.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             if (it) {
                 lectures = lecturesViewModel.lectures
@@ -95,7 +90,7 @@ class LectcuresFragment : Fragment() {
                     findNavController().navigate(
                         LectcuresFragmentDirections.actionLectcuresFragmentToStudentSheet(
                             Lecture,
-                            mCourse.courseCode + mCourse.courseGroup,mCourse.courseCode!!
+                            mCourse.courseCode + mCourse.courseGroup, mCourse.courseCode!!
                         )
                     )
 
@@ -110,13 +105,6 @@ class LectcuresFragment : Fragment() {
                 progressBar4.visibility = View.VISIBLE
             } else {
                 progressBar4.visibility = View.GONE
-            }
-        })
-        lecturesViewModel.noLectures.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            if (it) {
-                mHint.visibility = View.VISIBLE
-            } else {
-                mHint.visibility = View.GONE
             }
         })
 
@@ -152,7 +140,7 @@ class LectcuresFragment : Fragment() {
             }
             findNavController().navigate(
                 LectcuresFragmentDirections.actionLectcuresFragmentToQrCodeGenerated(
-                    date.toString()+"*${mCourse.courseCode}",
+                    date.toString() + "*${mCourse.courseCode}",
                     mCourse.courseCode + mCourse.courseGroup
                 )
             )
@@ -168,55 +156,57 @@ class LectcuresFragment : Fragment() {
 
     private fun getFile() {
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
-        intent.type = "application/vnd.ms-excel"
+        intent.type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         intent.addCategory(Intent.CATEGORY_OPENABLE)
         startActivityForResult(intent, GET_FIle_CODE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Log.e("EEEEEEEEEEEEEEEEE" , data!!.getData().toString())
 
-        if (requestCode==GET_FIle_CODE && resultCode== Activity.RESULT_OK){
-
-//            val path = Environment.getExternalStoragePublicDirectory(
-//                Environment.DIRECTORY_DOCUMENTS
-//            )
-//            val file: File? = File(path, data!!.data!!.path)
-//
-//            if (!file!!.parentFile.exists()) {
-//                file!!.parentFile.mkdirs()
-//            }
-//            if (!file!!.exists()) {
-//                file.createNewFile()
-//            }
-
-
-
-            Log.e("EEEEEEEEEEEEEEEEE" , RealPathUtil.getRealPath(MainActivity.context!!,data.getData()!!).toString())
-            Log.e("EEEEEEEEEEEEEEEEE" , data.data.toString())
-
-            val t: InputStream = FileInputStream(RealPathUtil.getRealPath(MainActivity.context!!,data.getData()!!))
+        if (requestCode == GET_FIle_CODE && resultCode == Activity.RESULT_OK) {
+            val inputStream = FileInputStream(
+                RealPathUtil.getRealPath(
+                    MainActivity.context!!,
+                    data!!.getData()!!
+                )
+            )
             try {
-                val wb = WorkbookFactory.create(t)
+                val wb = XSSFWorkbook(inputStream)
+                var students = arrayListOf<Student>()
                 for (sheet in wb) {
                     System.out.println(sheet.sheetName)
                     for (r in sheet) {
-                        for (c in r) {
-                            System.out.println(c.stringCellValue)
+                        if (r.rowNum > 14) {
+                            students.add(
+                                Student(
+                                    r.getCell(0).numericCellValue.toInt().toString(),
+                                    r.getCell(2).stringCellValue
+                                )
+                            )
+
                         }
                     }
+                    lifecycleScope.launch(Dispatchers.Main) {
+                        lecturesViewModel.addCourseToStudent(
+                            students,
+                            mCourse.courseCode + mCourse.courseGroup
+                        )
+
+                    }
+                    lifecycleScope.launch(Dispatchers.Main) {
+                        lecturesViewModel.addNameToStudent(students)
+
+                    }
                 }
+            } catch (E: Exception) {
+                Toast.makeText(this.requireContext(), E.message, Toast.LENGTH_SHORT).show()
             }
-            catch (E:Exception){
-                Log.e("EEEEEEEEEEEEEEEEE" , E.message.toString())
-
-            }
-
 
 
         }
     }
+
     fun askForPermissions() {
         if (Build.VERSION.SDK_INT >= 30) {
             if (!Environment.isExternalStorageManager()) {
@@ -226,9 +216,6 @@ class LectcuresFragment : Fragment() {
             }
         }
     }
-
-
-
 
 
 }
