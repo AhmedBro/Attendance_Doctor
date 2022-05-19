@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Doctor</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_your_mail">ادخل البريد الالكتروني الخاص بك</string>
+    <string name="password">كلمة المرور</string>
+    <string name="Mail">البريد الالكتروني</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="forget_password"><u>نسيت كلمة المرور ؟ </u></string>
+    <string name="enter_your_email">ادخل البريد الالكتروني الخاص بك</string>
+    <string name="email">البريد الالكتروني</string>
+    <string name="submit">ارسال</string>
+    <string name="add_teacher"> اضافة دكتور</string>
+    <string name="add_student">اضافة طلاب</string>
+    <string name="show_teacher_table">قائمة اعضاء التدريس </string>
+    <string name="show_student_table">Show student table</string>
+    <string name="welcome">مرحبا</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="forgotten_password">نسيت كلمة المرور ؟</string>
+    <string name="teacher_name">اسم الدكتور:</string>
+    <string name="teacher_code">كود الدكتور :</string>
+    <string name="addcourse_btn">أضافة كورس</string>
+    <string name="show_teacher">أعضاء التدريس</string>
+    <string name="year">السنة</string>
+    <string name="first_id">اول ID</string>
+    <string name="add">أضافة</string>
+    <string name="teachers">أعضاء التدريس</string>
+    <string name="add_new_teacher"><u>+اضافة دكتور</u></string>
+    <string name="add_new_course"><u>+أضافة كورس</u></string>
+    <string name="students">الطلاب</string>
+    <string name="Courses">الكورسات</string>
+    <string name="courses">الكورسات</string>
+    <string name="teacher_title">أعضاء التدريس</string>
+    <string name="no_teachers_yet">لا يوجد أعضاء تدريس</string>
+    <string name="save">حفظ</string>
+    <string name="save_cources">حفظ</string>
+    <string name="search_student"><u>بحث عن طالب</u></string>
+    <string name="search">بحث</string>
+    <string name="copyRight">© 2022 FCAIH <b>AMMMA</b> team</string>
+    <string name="course_name">أسم الكورس</string>
+    <string name="course_code">كود الكورس</string>
+    <string name="date">التاريخ</string>
+    <string name="from">من</string>
+    <string name="to">الي</string>
+    <string name="place">المكان</string>
+    <string name="search_for_student_by_id">البحث عن طالب عن طريق ID</string>
+    <string name="doctor_guide"><i>كدكتور تستطيع ان تطلع علي المواد التي تقوم بتدريسها ورفع ملف الطلاب الخاص بالمادة وتستطيع انشاء QR Code، كما تستطيع:</i></string>
+    <string name="change_password"><b><u>تغيير كلمة المرور</u></b></string>
+    <string name="id">ID</string>
+    <string name="last_id">اخر ID</string>
+    <string-array name="Groups">
+        <item> Group 1</item>
+        <item> Group 2</item>
+    </string-array>
+
+    <string name="download_sheet">تنزيل ملف حضور الطلاب</string>
+    <string name="show_Qr_code">فحص QR Code</string>
+    <string name="Done">تم</string>
+    <string name="details">التفاصيل</string>
+    <string name="generate_qr_code">انشاء Qr code</string>
+    <string name="upload_student_sheet">رفع ملف الطلبة</string>
+    <string name="old_password">كلمة المرور القديمة</string>
+    <string name="new_password">كلمة المرور الجديدة</string>
+    <string name="confirm_new_password">تأكيد كلمة المرور</string>
+    <string name="no_lectures_yet">لا محاضرات حالياً</string>
+    <string name="no_students_yet">لا طلاب حالياً</string>
+
+</resources>
