@@ -20,8 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:riv_corner_radius="@dimen/_15ssp"
-     />
+        app:riv_corner_radius="@dimen/_15ssp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mStudentsRecycler"
@@ -33,6 +32,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mLogo"
         tools:listitem="@layout/student_list_item_view" />
+
+    <TextView
+        android:id="@+id/mNoStudentsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Students yet"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_20ssp"
+        android:textStyle="italic"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/mStudentsRecycler"
+        app:layout_constraintEnd_toEndOf="@+id/mStudentsRecycler"
+        app:layout_constraintStart_toStartOf="@+id/mStudentsRecycler"
+        app:layout_constraintTop_toTopOf="@+id/mStudentsRecycler" />
 
     <TextView
         android:id="@+id/mAlterStudentsTv"

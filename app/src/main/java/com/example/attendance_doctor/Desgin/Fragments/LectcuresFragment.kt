@@ -81,9 +81,9 @@ class LectcuresFragment : Fragment() {
                 mStudentsRecycler.layoutManager =
                     LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
                 if (lectures.isEmpty()) {
-                    Toast.makeText(this.context, "There is no lectures yet", Toast.LENGTH_LONG)
-                        .show()
+                    mNoLecturesTV.visibility = View.VISIBLE
                 } else {
+                    mNoLecturesTV.visibility = View.GONE
                     mStudentsRecycler.adapter = adapter
                 }
                 adapter.setOnItemClickListener { Lecture ->
