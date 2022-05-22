@@ -26,6 +26,12 @@ class LecturesViewModel : ViewModel() {
     private val _doneAdding = MutableLiveData<Boolean>()
     val doneAdding: LiveData<Boolean>
         get() = _doneAdding
+    private val _doneDelete = MutableLiveData<Boolean>()
+    val doneDelete: LiveData<Boolean>
+        get() = _doneDelete
+    fun doneDelete(){
+        _doneDelete.value=false
+    }
 
 
     private val _noLectures = MutableLiveData<Boolean>()
@@ -119,7 +125,7 @@ class LecturesViewModel : ViewModel() {
         InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
             .collection(Constants.LECTURES).document(LectureID).delete().addOnSuccessListener {
                 _showProgressbar.value = false
-                _doneAdding.value=true
+                _doneDelete.value=true
                 _error.value = "Lecture Deleted Successfully"
             }.addOnFailureListener {
                 _error.value = it.message

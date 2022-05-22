@@ -68,11 +68,12 @@ class LectcuresFragment : Fragment() {
             lecturesViewModel.getLectures(mCourse.courseCode + mCourse.courseGroup)
         }
         mCourseName.text = mCourse.courseName
-        lecturesViewModel.doneAdding.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+        lecturesViewModel.doneDelete.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             if (it){
                 lifecycleScope.launch(Dispatchers.Main) {
                     lecturesViewModel.getLectures(mCourse.courseCode + mCourse.courseGroup)
                 }
+                lecturesViewModel.doneDelete()
             }
         })
         lecturesViewModel.error.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
