@@ -85,6 +85,9 @@
         <argument
             android:name="CourseCodeOnly"
             app:argType="string" />
+        <action
+            android:id="@+id/action_studentSheet_to_addStudentManuallyFragment"
+            app:destination="@id/addStudentManuallyFragment" />
     </fragment>
     <fragment
         android:id="@+id/lectcuresFragment"
@@ -123,5 +126,20 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/main"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addStudentManuallyFragment"
+        android:name="com.example.attendance_doctor.Desgin.Fragments.AddStudentManuallyFragment"
+        android:label="fragment_add_student_manually"
+        tools:layout="@layout/fragment_add_student_manually" >
+        <argument
+            android:name="courseCode"
+            app:argType="string" />
+        <argument
+            android:name="lectureID"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_addStudentManuallyFragment_to_studentSheet2"
+            app:destination="@id/studentSheet" />
     </fragment>
 </navigation>

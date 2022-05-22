@@ -2,6 +2,8 @@ package com.example.attendance_doctor.Desgin.Fragments
 
 //import com.monitorjbl.xlsx.StreamingReader
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.Environment
@@ -95,6 +97,9 @@ class LectcuresFragment : Fragment() {
                     )
 
                 }
+                adapter.setOnItemLongClickListener {
+                    deleteLecture(it)
+                }
 
                 lecturesViewModel.doneRetrievingdata()
             }
@@ -146,12 +151,38 @@ class LectcuresFragment : Fragment() {
             )
         }
 
+
+
         askForPermissions()
         mUploadStudentSheet.setOnClickListener {
 
             getFile()
         }
 
+    }
+
+    private fun deleteLecture(lecture : String) {
+
+            val builder1: AlertDialog.Builder = AlertDialog.Builder(MainActivity.context)
+            builder1.setMessage(lecture)
+            builder1.setCancelable(true)
+
+            builder1.setPositiveButton(
+                "Delete",
+                DialogInterface.OnClickListener {
+
+                        dialog, id ->
+                    lecturesViewModel.deleteLecture(mCourse.courseCode+mCourse.courseGroup , lecture+"*${mCourse.courseCode}")
+                    dialog.cancel()
+
+                })
+
+            builder1.setNegativeButton(
+                "Cancel",
+                DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
+
+            val alert11: AlertDialog = builder1.create()
+            alert11.show()
     }
 
     private fun getFile() {

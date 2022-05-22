@@ -23,6 +23,11 @@ class LecturesViewModel : ViewModel() {
     val doneRetrieving: LiveData<Boolean>
         get() = _doneRetrieving
 
+    private val _doneAdding = MutableLiveData<Boolean>()
+    val doneAdding: LiveData<Boolean>
+        get() = _doneAdding
+
+
     private val _noLectures = MutableLiveData<Boolean>()
     val noLectures: LiveData<Boolean>
         get() = _noLectures
@@ -78,7 +83,7 @@ class LecturesViewModel : ViewModel() {
                     student.StudentID!!
                 ).update("coursesId", FieldValue.arrayUnion(courseName)).addOnFailureListener {
 
-            }
+                }
         }
 
 
@@ -90,22 +95,34 @@ class LecturesViewModel : ViewModel() {
             InitFireStore.instance.collection(Constants.STUDENTS_TABLE)
                 .document(students[index].StudentID!!.substring(0, 4))
                 .collection(Constants.STUDENT_DATA).document(
-                students[index].StudentID!!
-            ).update("studentName", students[index].StudentName).addOnSuccessListener {
-                if (index == students.size - 1) {
-                    _error.value = "successfully add student to this course"
-                    _showProgressbar.value = false
+                    students[index].StudentID!!
+                ).update("studentName", students[index].StudentName).addOnSuccessListener {
+                    if (index == students.size - 1) {
+                        _error.value = "successfully add student to this course"
+                        _showProgressbar.value = false
 
+                    }
+                }.addOnFailureListener {
+                    if (it.message?.substring(0, 9).equals("NOT_FOUND")) {
+                        _error.value = "Not Existing Student" + " ${students[index].StudentID}"
+                    } else {
+                        _error.value = it.message
+                    }
+                    _showProgressbar.value = false
                 }
-            }.addOnFailureListener {
-                if (it.message?.substring(0, 9).equals("NOT_FOUND")) {
-                    _error.value = "Not Existing Student"+" ${students[index].StudentID}"
-                } else {
-                    _error.value = it.message
-                }
-                _showProgressbar.value = false
-            }
 
         }
+    }
+
+    fun deleteLecture(CourseID: String, LectureID: String) {
+
+        InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
+            .collection(Constants.LECTURES).document(LectureID).delete().addOnSuccessListener {
+                _showProgressbar.value = false
+                _error.value = "Lecture Deleted Successfully"
+            }.addOnFailureListener {
+                _error.value = it.message
+                _showProgressbar.value = false
+            }
     }
 }

@@ -37,6 +37,8 @@ import android.graphics.Color
 import android.graphics.Color.red
 import android.net.Uri
 import android.provider.Settings
+import android.widget.TextView
+import androidx.navigation.Navigation
 import com.example.attendance_doctor.Desgin.Activities.MainActivity
 import org.apache.poi.ss.usermodel.HorizontalAlignment
 
@@ -64,6 +66,10 @@ class StudentSheet : Fragment() {
         CourseID = StudentSheetArgs.fromBundle(requireArguments()).courseCode
         LectureID = StudentSheetArgs.fromBundle(requireArguments()).lectureName
         val rv = view.findViewById<RecyclerView>(R.id.mStudentsRecycler)
+        val tv = view.findViewById<TextView>(R.id.mAddStudentManually)
+        tv.setOnClickListener {
+            findNavController().navigate(StudentSheetDirections.actionStudentSheetToAddStudentManuallyFragment(CourseID , LectureID+"*${StudentSheetArgs.fromBundle(requireArguments()).courseCodeOnly}"))
+        }
         val manager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         rv.layoutManager = manager
         lifecycleScope.launch(Dispatchers.Main) {
@@ -76,9 +82,9 @@ class StudentSheet : Fragment() {
             if (it) {
                 StudentList = lectureAttendanceViewModel.Students
                 if (StudentList.isEmpty()) {
-                    mNoStudentsTV.visibility = View.VISIBLE
+                    mAlterStudentsTv.visibility = View.VISIBLE
                 } else {
-                    mNoStudentsTV.visibility = View.GONE
+                    mAlterStudentsTv.visibility = View.GONE
                 }
                 adapter.submitList(StudentList)
                 rv.adapter = adapter

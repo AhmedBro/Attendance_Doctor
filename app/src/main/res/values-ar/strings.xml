@@ -27,6 +27,7 @@
     <string name="teachers">أعضاء التدريس</string>
     <string name="add_new_teacher"><u>+اضافة دكتور</u></string>
     <string name="add_new_course"><u>+أضافة كورس</u></string>
+    <string name="add_student_manually"><u>+إضافة طالب يدوياً</u></string>
     <string name="students">الطلاب</string>
     <string name="Courses">الكورسات</string>
     <string name="courses">الكورسات</string>
@@ -35,7 +36,7 @@
     <string name="save">حفظ</string>
     <string name="save_cources">حفظ</string>
     <string name="search_student"><u>بحث عن طالب</u></string>
-    <string name="search">بحث</string>
+    <string name="search">إضافة</string>
     <string name="copyRight">© 2022 FCAIH <b>AMMMA</b> team</string>
     <string name="course_name">أسم الكورس</string>
     <string name="course_code">كود الكورس</string>
@@ -43,7 +44,7 @@
     <string name="from">من</string>
     <string name="to">الي</string>
     <string name="place">المكان</string>
-    <string name="search_for_student_by_id">البحث عن طالب عن طريق ID</string>
+    <string name="search_for_student_by_id">إضافة طالب عن طريق ID</string>
     <string name="doctor_guide"><i>كدكتور تستطيع ان تطلع علي المواد التي تقوم بتدريسها ورفع ملف الطلاب الخاص بالمادة وتستطيع انشاء QR Code، كما تستطيع:</i></string>
     <string name="change_password"><b><u>تغيير كلمة المرور</u></b></string>
     <string name="id">ID</string>

@@ -16,11 +16,26 @@
         android:background="@drawable/selector3"
         android:foregroundGravity="center_horizontal"
         android:src="@drawable/logo_admin"
-        app:layout_constraintBottom_toTopOf="@id/mStudentsRecycler"
+        app:layout_constraintBottom_toTopOf="@id/mAddStudentManually"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:riv_corner_radius="@dimen/_15ssp" />
+
+    <TextView
+        android:id="@+id/mAddStudentManually"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15ssp"
+        android:layout_marginEnd="@dimen/_15ssp"
+        android:layout_marginBottom="@dimen/_10ssp"
+        android:text="@string/add_student_manually"
+        android:textAlignment="textEnd"
+        android:textColor="@color/gray"
+        app:layout_constraintBottom_toTopOf="@+id/mStudentsRecycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mLogo" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mStudentsRecycler"
@@ -30,22 +45,8 @@
         app:layout_constraintBottom_toTopOf="@id/mButtons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mLogo"
+        app:layout_constraintTop_toBottomOf="@+id/mAddStudentManually"
         tools:listitem="@layout/student_list_item_view" />
-
-    <TextView
-        android:id="@+id/mNoStudentsTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No Students yet"
-        android:textColor="@color/gray"
-        android:textSize="@dimen/_20ssp"
-        android:textStyle="italic"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/mStudentsRecycler"
-        app:layout_constraintEnd_toEndOf="@+id/mStudentsRecycler"
-        app:layout_constraintStart_toStartOf="@+id/mStudentsRecycler"
-        app:layout_constraintTop_toTopOf="@+id/mStudentsRecycler" />
 
     <TextView
         android:id="@+id/mAlterStudentsTv"
@@ -54,7 +55,6 @@
         android:text="@string/no_students_yet"
         android:textColor="@color/gray"
         android:textSize="@dimen/_20ssp"
-        android:textStyle="italic"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/mStudentsRecycler"
         app:layout_constraintBottom_toTopOf="@id/mButtons"
