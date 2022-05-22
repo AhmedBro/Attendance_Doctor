@@ -68,6 +68,13 @@ class LectcuresFragment : Fragment() {
             lecturesViewModel.getLectures(mCourse.courseCode + mCourse.courseGroup)
         }
         mCourseName.text = mCourse.courseName
+        lecturesViewModel.doneAdding.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if (it){
+                lifecycleScope.launch(Dispatchers.Main) {
+                    lecturesViewModel.getLectures(mCourse.courseCode + mCourse.courseGroup)
+                }
+            }
+        })
         lecturesViewModel.error.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             if (it != null) {
                 Toast.makeText(this.requireContext(), it, Toast.LENGTH_SHORT).show()
