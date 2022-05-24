@@ -156,11 +156,12 @@ class LecturesViewModel : ViewModel() {
                 if ((it.toObject(Student::class.java))!!.StudentID == "enabled" || (it.toObject(Student::class.java))!!.StudentID == "Dummy ID"){
                     InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
                         .collection(Constants.LECTURES).document(LectureID).collection(Constants.LECTURES_DATA)
-                        .document("Dummy").set(student)
+                        .document("Dummy").set(student).addOnSuccessListener { _error.value = "lecture attendance disable successfully" }
+
                 }else{
                     InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
                         .collection(Constants.LECTURES).document(LectureID).collection(Constants.LECTURES_DATA)
-                        .document("Dummy").set(student2)
+                        .document("Dummy").set(student2).addOnSuccessListener { _error.value = "lecture attendance enabled successfully" }
                 }
 
             }.addOnFailureListener {
