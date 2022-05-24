@@ -65,10 +65,18 @@ class StudentSheet : Fragment() {
         StudentList = arrayListOf()
         CourseID = StudentSheetArgs.fromBundle(requireArguments()).courseCode
         LectureID = StudentSheetArgs.fromBundle(requireArguments()).lectureName
+        lifecycleScope.launch(Dispatchers.Main) {
+            lectureAttendanceViewModel.disableAttendance(CourseID , LectureID + "*${StudentSheetArgs.fromBundle(requireArguments()).courseCodeOnly}")
+        }
         val rv = view.findViewById<RecyclerView>(R.id.mStudentsRecycler)
         val tv = view.findViewById<TextView>(R.id.mAddStudentManually)
         tv.setOnClickListener {
-            findNavController().navigate(StudentSheetDirections.actionStudentSheetToAddStudentManuallyFragment(CourseID , LectureID+"*${StudentSheetArgs.fromBundle(requireArguments()).courseCodeOnly}"))
+            findNavController().navigate(
+                StudentSheetDirections.actionStudentSheetToAddStudentManuallyFragment(
+                    CourseID,
+                    LectureID + "*${StudentSheetArgs.fromBundle(requireArguments()).courseCodeOnly}"
+                )
+            )
         }
         val manager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         rv.layoutManager = manager
@@ -101,6 +109,12 @@ class StudentSheet : Fragment() {
         })
         lectureAttendanceViewModel.error.observe(viewLifecycleOwner, Observer {
             Toast.makeText(this.context, it, Toast.LENGTH_LONG).show()
+        })
+        lectureAttendanceViewModel.disabledFlag.observe(viewLifecycleOwner , Observer {
+            if (it){
+                mShowQrCodeButton.setBackgroundResource(R.drawable.details_shap_disabled)
+                mShowQrCodeButton.isClickable = false
+            }
         })
         view.findViewById<Button>(R.id.mShowQrCodeButton).setOnClickListener {
             findNavController().navigate(

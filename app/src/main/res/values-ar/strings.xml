@@ -55,7 +55,7 @@
     </string-array>
 
     <string name="download_sheet">تنزيل ملف حضور الطلاب</string>
-    <string name="show_Qr_code">فحص QR Code</string>
+    <string name="show_Qr_code">عرض QR Code</string>
     <string name="Done">تم</string>
     <string name="details">التفاصيل</string>
     <string name="generate_qr_code">انشاء Qr code</string>

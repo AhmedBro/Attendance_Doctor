@@ -29,8 +29,10 @@ class LecturesViewModel : ViewModel() {
     private val _doneDelete = MutableLiveData<Boolean>()
     val doneDelete: LiveData<Boolean>
         get() = _doneDelete
-    fun doneDelete(){
-        _doneDelete.value=false
+
+
+    fun doneDelete() {
+        _doneDelete.value = false
     }
 
 
@@ -123,21 +125,46 @@ class LecturesViewModel : ViewModel() {
     fun deleteLecture(CourseID: String, LectureID: String) {
 
         InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
-            .collection(Constants.LECTURES).document(LectureID).collection(Constants.LECTURES_DATA).get().addOnSuccessListener {
+            .collection(Constants.LECTURES).document(LectureID).collection(Constants.LECTURES_DATA)
+            .get().addOnSuccessListener {
 
-                for (i in it){
+                for (i in it) {
                     InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
-                        .collection(Constants.LECTURES).document(LectureID).collection(Constants.LECTURES_DATA).document(i.id).delete()
+                        .collection(Constants.LECTURES).document(LectureID)
+                        .collection(Constants.LECTURES_DATA).document(i.id).delete()
                 }
                 InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
                     .collection(Constants.LECTURES).document(LectureID).delete()
 
                 _showProgressbar.value = false
-                _doneDelete.value=true
+                _doneDelete.value = true
                 _error.value = "Lecture Deleted Successfully"
             }.addOnFailureListener {
                 _error.value = it.message
                 _showProgressbar.value = false
+            }
+    }
+
+    fun disableAttendance(CourseID: String, LectureID: String) {
+
+        var student = Student("disabled", "disabled")
+        var student2 = Student("enabled", "enabled")
+
+        InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
+            .collection(Constants.LECTURES).document(LectureID).collection(Constants.LECTURES_DATA)
+            .document("Dummy").get().addOnSuccessListener {
+                if ((it.toObject(Student::class.java))!!.StudentID == "enabled" || (it.toObject(Student::class.java))!!.StudentID == "Dummy ID"){
+                    InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
+                        .collection(Constants.LECTURES).document(LectureID).collection(Constants.LECTURES_DATA)
+                        .document("Dummy").set(student)
+                }else{
+                    InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
+                        .collection(Constants.LECTURES).document(LectureID).collection(Constants.LECTURES_DATA)
+                        .document("Dummy").set(student2)
+                }
+
+            }.addOnFailureListener {
+                _error.value = it.message
             }
     }
 }

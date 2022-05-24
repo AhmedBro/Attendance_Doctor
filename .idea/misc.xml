@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Attendance_Doctor/app/src/main/res/drawable-v24/details_shap2.xml" value="0.1385" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/drawable/course_shap.xml" value="0.139" />
+        <entry key="..\:/Attendance_Doctor/app/src/main/res/drawable/details_shap.xml" value="0.1385" />
+        <entry key="..\:/Attendance_Doctor/app/src/main/res/drawable/details_shap_disabled.xml" value="0.1385" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/drawable/qr_border.xml" value="0.139" />
+        <entry key="..\:/Attendance_Doctor/app/src/main/res/drawable/selector2.xml" value="0.1385" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/layout-ldrtl/lectcure_shap.xml" value="0.18885869565217392" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/layout-ldrtl/student_list_item_view.xml" value="0.25" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/fragment_add_student_manually.xml" value="0.20416666666666666" />
@@ -14,6 +18,7 @@
         <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/fragment_login.xml" value="0.10507246376811594" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/fragment_qr_code_generated.xml" value="0.20416666666666666" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/fragment_student_sheet.xml" value="0.25" />
+        <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/lectcure_shap.xml" value="0.22" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/list_item_course_view.xml" value="0.18885869565217392" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/layout/student_list_item_view.xml" value="0.25" />
         <entry key="..\:/Attendance_Doctor/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1185" />

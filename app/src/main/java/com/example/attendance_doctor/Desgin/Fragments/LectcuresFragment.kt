@@ -191,8 +191,12 @@ class LectcuresFragment : Fragment() {
             })
 
         builder1.setNegativeButton(
-            "Cancel",
+            "Disable/Enable Attendance",
             DialogInterface.OnClickListener { dialog, id ->
+                lecturesViewModel.disableAttendance(
+                    mCourse.courseCode + mCourse.courseGroup,
+                    lecture + "*${mCourse.courseCode}"
+                )
                 dialog.cancel()
                 progressBar4.visibility = View.INVISIBLE
             })

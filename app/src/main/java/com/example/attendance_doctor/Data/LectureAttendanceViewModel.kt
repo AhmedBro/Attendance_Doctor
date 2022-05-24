@@ -26,6 +26,10 @@ class LectureAttendanceViewModel : ViewModel() {
     val doneAdding: LiveData<Boolean>
         get() = _doneAdding
 
+    private val _disabledFlag = MutableLiveData<Boolean>()
+    val disabledFlag: LiveData<Boolean>
+        get() = _disabledFlag
+
     fun doneRetrievingdata() {
         _doneRetrieving.value = false
     }
@@ -67,8 +71,6 @@ class LectureAttendanceViewModel : ViewModel() {
     }
 
 
-
-
     suspend fun addManually(student: Student, LectureID: String, courseCode: String) {
         InitFireStore.instance.collection(Constants.COURSES_TABLE)
             .document(courseCode)
@@ -82,4 +84,20 @@ class LectureAttendanceViewModel : ViewModel() {
             }
 
     }
+
+    fun disableAttendance(CourseID: String, LectureID: String) {
+
+        var student = Student("disabled", "disabled")
+        var student2 = Student("enabled", "enabled")
+
+        InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
+            .collection(Constants.LECTURES).document(LectureID).collection(Constants.LECTURES_DATA)
+            .document("Dummy").get().addOnSuccessListener {
+                _disabledFlag.value = it.toObject(Student::class.java)!!.StudentID == "disabled"
+            }.addOnFailureListener {
+                _error.value = it.message
+            }
+    }
+
+
 }
