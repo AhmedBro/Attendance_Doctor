@@ -171,7 +171,7 @@ class LectcuresFragment : Fragment() {
 
     private fun deleteLecture(lecture: String) {
 
-        progressBar4.visibility = View.VISIBLE
+        progressBar4.visibility = View.GONE
         val builder1: AlertDialog.Builder = AlertDialog.Builder(MainActivity.context)
         builder1.setMessage(lecture)
         builder1.setCancelable(true)
@@ -186,6 +186,7 @@ class LectcuresFragment : Fragment() {
                     lecture + "*${mCourse.courseCode}"
                 )
                 dialog.cancel()
+                lecturesViewModel.showProgressBar()
 
 
             })
@@ -198,6 +199,7 @@ class LectcuresFragment : Fragment() {
                     lecture + "*${mCourse.courseCode}"
                 )
                 dialog.cancel()
+                lecturesViewModel.showProgressBar()
                 progressBar4.visibility = View.INVISIBLE
             })
         builder1.setOnDismissListener { progressBar4.visibility = View.INVISIBLE }
