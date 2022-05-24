@@ -123,7 +123,15 @@ class LecturesViewModel : ViewModel() {
     fun deleteLecture(CourseID: String, LectureID: String) {
 
         InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
-            .collection(Constants.LECTURES).document(LectureID).delete().addOnSuccessListener {
+            .collection(Constants.LECTURES).document(LectureID).collection(Constants.LECTURES_DATA).get().addOnSuccessListener {
+
+                for (i in it){
+                    InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
+                        .collection(Constants.LECTURES).document(LectureID).collection(Constants.LECTURES_DATA).document(i.id).delete()
+                }
+                InitFireStore.instance.collection(Constants.COURSES_TABLE).document(CourseID)
+                    .collection(Constants.LECTURES).document(LectureID).delete()
+
                 _showProgressbar.value = false
                 _doneDelete.value=true
                 _error.value = "Lecture Deleted Successfully"

@@ -69,7 +69,7 @@ class LectcuresFragment : Fragment() {
         }
         mCourseName.text = mCourse.courseName
         lecturesViewModel.doneDelete.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            if (it){
+            if (it) {
                 lifecycleScope.launch(Dispatchers.Main) {
                     lecturesViewModel.getLectures(mCourse.courseCode + mCourse.courseGroup)
                 }
@@ -169,28 +169,37 @@ class LectcuresFragment : Fragment() {
 
     }
 
-    private fun deleteLecture(lecture : String) {
+    private fun deleteLecture(lecture: String) {
 
-            val builder1: AlertDialog.Builder = AlertDialog.Builder(MainActivity.context)
-            builder1.setMessage(lecture)
-            builder1.setCancelable(true)
+        progressBar4.visibility = View.VISIBLE
+        val builder1: AlertDialog.Builder = AlertDialog.Builder(MainActivity.context)
+        builder1.setMessage(lecture)
+        builder1.setCancelable(true)
 
-            builder1.setPositiveButton(
-                "Delete",
-                DialogInterface.OnClickListener {
+        builder1.setPositiveButton(
+            "Delete",
+            DialogInterface.OnClickListener {
 
-                        dialog, id ->
-                    lecturesViewModel.deleteLecture(mCourse.courseCode+mCourse.courseGroup , lecture+"*${mCourse.courseCode}")
-                    dialog.cancel()
+                    dialog, id ->
+                lecturesViewModel.deleteLecture(
+                    mCourse.courseCode + mCourse.courseGroup,
+                    lecture + "*${mCourse.courseCode}"
+                )
+                dialog.cancel()
 
-                })
 
-            builder1.setNegativeButton(
-                "Cancel",
-                DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
+            })
 
-            val alert11: AlertDialog = builder1.create()
-            alert11.show()
+        builder1.setNegativeButton(
+            "Cancel",
+            DialogInterface.OnClickListener { dialog, id ->
+                dialog.cancel()
+                progressBar4.visibility = View.INVISIBLE
+            })
+        builder1.setOnDismissListener { progressBar4.visibility = View.INVISIBLE }
+
+        val alert11: AlertDialog = builder1.create()
+        alert11.show()
     }
 
     private fun getFile() {
