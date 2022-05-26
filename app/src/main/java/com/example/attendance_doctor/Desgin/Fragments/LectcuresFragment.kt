@@ -232,14 +232,20 @@ class LectcuresFragment : Fragment() {
                     System.out.println(sheet.sheetName)
                     for (r in sheet) {
                         if (r.rowNum > 14) {
-                            students.add(
-                                Student(
-                                    r.getCell(0).numericCellValue.toInt().toString(),
-                                    r.getCell(2).stringCellValue
+                            if (r.getCell(0).numericCellValue.toInt()==0){
+                                continue
+                            }
+                            else{
+                                students.add(
+                                    Student(
+                                        r.getCell(0).numericCellValue.toInt().toString(),
+                                        r.getCell(2).stringCellValue
+                                    )
                                 )
-                            )
 
-                        }
+                            }
+                            }
+
                     }
                     lifecycleScope.launch(Dispatchers.Main) {
                         lecturesViewModel.addCourseToStudent(
